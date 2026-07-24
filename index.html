@@ -1,648 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brookes AI — Learn to Leverage AI</title>
-<meta name="description" content="Three focused AI courses: for industry specialists, working professionals, and everyday people. Learn to leverage AI wherever you're starting from.">
+<title>Brookes AI — Practical AI skills for work and everyday life</title>
+<meta name="description" content="Learn to use AI confidently and save time, with clear guidance from an MSc Artificial Intelligence graduate. Start with Practical AI for Everyone — £10.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
-<style>
-
-/* ============ TOKENS ============ */
-:root{
-  /* base */
-  --color-bg: #161826;
-  --color-text: #e9e9ed;
-
-  /* neutral ramp (100 light -> 900 dark) */
-  --color-neutral-100: #f4f4f6;
-  --color-neutral-200: #e0e0e6;
-  --color-neutral-300: #c3c3cd;
-  --color-neutral-400: #9c9ca8;
-  --color-neutral-500: #75757f;
-  --color-neutral-600: #52525c;
-  --color-neutral-700: #373740;
-  --color-neutral-800: #23232c;
-  --color-neutral-900: #1c1c24;
-
-  /* accent ramp (mono scheme, accent-2 aliases accent) */
-  --color-accent-100: #eeecfa;
-  --color-accent-200: #dad3f2;
-  --color-accent-300: #bfb2e6;
-  --color-accent-400: #a897dd;
-  --color-accent-500: #9184d9;
-  --color-accent-600: #7c6ec2;
-  --color-accent-700: #63588f;
-  --color-accent-800: #423a63;
-  --color-accent-900: #2b2645;
-  --color-accent: var(--color-accent-500);
-  --color-accent-2-100: var(--color-accent-100);
-  --color-accent-2-300: var(--color-accent-300);
-  --color-accent-2-500: var(--color-accent-500);
-  --color-accent-2-700: var(--color-accent-700);
-  --color-accent-2-900: var(--color-accent-900);
-
-  /* the one saturated ground, used only for the stat band */
-  --color-section: #2a2160;
-  --color-section-text: #f0eefb;
-
-  /* type */
-  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* spacing — density 0.7x */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 11px;
-  --space-4: 17px;
-  --space-5: 22px;
-  --space-6: 34px;
-  --space-7: 45px;
-  --space-8: 67px;
-
-  /* radius */
-  --radius-sm: 4px;
-  --radius: 8px;
-  --radius-lg: 14px;
-
-  /* shadow — tuned to the dark ground */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.35);
-  --shadow-md: 0 6px 16px rgba(0,0,0,0.4);
-  --shadow-lg: 0 16px 40px rgba(0,0,0,0.5);
-}
-
-/* ============ RESET / BASE ============ */
-*, *::before, *::after{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
-body{
-  margin: 0;
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-neutral-900) 100%);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, h4{
-  font-family: var(--font-heading);
-  font-weight: 500; /* never bolder than 500 */
-  line-height: 1.15;
-  margin: 0 0 var(--space-3) 0;
-  color: var(--color-text);
-}
-p{ margin: 0 0 var(--space-4) 0; color: var(--color-neutral-300); }
-a{ color: inherit; text-decoration: none; }
-img{ max-width: 100%; display: block; }
-ul{ margin: 0; padding: 0; list-style: none; }
-
-::selection{ background: var(--color-accent-700); color: var(--color-text); }
-
-:focus-visible{
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-.wrap{
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 var(--space-6);
-}
-@media (max-width: 640px){
-  .wrap{ padding: 0 var(--space-4); }
-}
-
-.kicker{
-  display: inline-block;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-accent-300);
-  margin-bottom: var(--space-3);
-  font-weight: 500;
-}
-
-.hr{
-  height: 1px;
-  border: 0;
-  background: linear-gradient(90deg, transparent 0%, var(--color-neutral-700) 48px, var(--color-neutral-700) calc(100% - 48px), transparent 100%);
-  margin: var(--space-7) 0;
-}
-
-/* ============ BUTTONS ============ */
-.btn{
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid transparent;
-  background: transparent;
-  transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
-  white-space: nowrap;
-}
-.btn:active{ transform: translateY(1px); }
-
-.btn-primary{
-  border-color: var(--color-accent);
-  color: var(--color-accent-100);
-}
-.btn-primary:hover{
-  background: var(--color-accent-900);
-  border-color: var(--color-accent-400);
-}
-.btn-primary:active{
-  background: var(--color-accent-800);
-}
-
-.btn-secondary{
-  border-color: var(--color-neutral-600);
-  color: var(--color-text);
-}
-.btn-secondary:hover{
-  background: var(--color-neutral-800);
-  border-color: var(--color-neutral-400);
-}
-
-.btn-ghost{
-  color: var(--color-neutral-300);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-}
-.btn-ghost:hover{ color: var(--color-text); }
-
-.btn-block{ width: 100%; justify-content: center; }
-
-.btn-icon{
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  justify-content: center;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-neutral-700);
-  color: var(--color-neutral-300);
-}
-.btn-icon:hover{
-  border-color: var(--color-accent-400);
-  color: var(--color-accent-200);
-  background: var(--color-accent-900);
-}
-
-/* ============ TAGS ============ */
-.tag{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-.tag-accent{ background: var(--color-accent-900); color: var(--color-accent-200); }
-.tag-outline{ border: 1px solid var(--color-neutral-600); color: var(--color-neutral-300); }
-
-/* ============ NAV ============ */
-.nav{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4) 0;
-  background: rgba(22, 24, 38, 0.82);
-  backdrop-filter: blur(10px);
-  transition: box-shadow .2s ease, border-color .2s ease;
-  border-bottom: 1px solid transparent;
-}
-.nav.scrolled{
-  border-bottom-color: var(--color-neutral-800);
-  box-shadow: var(--shadow-sm);
-}
-.nav-inner{
-  max-width: 1120px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--space-6);
-}
-.nav-brand{
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--color-text);
-}
-.nav-brand .mark{
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-accent-300);
-  font-size: 0.9rem;
-}
-.nav-links{
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-}
-.nav-links a{
-  font-size: 0.9rem;
-  color: var(--color-neutral-300);
-  transition: color .15s ease;
-}
-.nav-links a:hover{ color: var(--color-text); }
-.nav-actions{ display: flex; align-items: center; gap: var(--space-3); }
-.nav-toggle{
-  display: none;
-  background: none;
-  border: 1px solid var(--color-neutral-700);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-@media (max-width: 860px){
-  .nav-links{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    background: var(--color-neutral-900);
-    border-bottom: 1px solid var(--color-neutral-800);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .25s ease;
-  }
-  .nav-links.open{ max-height: 320px; }
-  .nav-links a{
-    width: 100%;
-    padding: var(--space-4) var(--space-6);
-    border-top: 1px solid var(--color-neutral-800);
-  }
-  .nav-toggle{ display: flex; }
-  .nav-actions .btn-primary{ display: none; }
-}
-
-/* ============ HERO ============ */
-.hero{
-  padding: var(--space-8) 0 var(--space-7);
-}
-.hero-grid{
-  display: grid;
-  grid-template-columns: minmax(0,1fr) 360px;
-  gap: var(--space-8);
-  align-items: center;
-}
-.hero h1{
-  font-size: clamp(2.1rem, 4vw, 3.1rem);
-  max-width: 16ch;
-}
-.hero p.lead{
-  font-size: 1.1rem;
-  max-width: 46ch;
-  color: var(--color-neutral-300);
-}
-.hero-actions{
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-5);
-  flex-wrap: wrap;
-}
-.hero-note{
-  margin-top: var(--space-5);
-  font-size: 0.85rem;
-  color: var(--color-neutral-500);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.hero-panel{
-  position: relative;
-  border: 1px solid var(--color-neutral-700);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(120% 140% at 20% 0%, var(--color-accent-900) 0%, transparent 55%),
-    linear-gradient(160deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-md);
-  aspect-ratio: 1/1.1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-}
-.hero-panel::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.35) 100%);
-  pointer-events: none;
-}
-.hero-panel .track-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--color-neutral-700);
-  font-size: 0.82rem;
-  color: var(--color-neutral-300);
-}
-.hero-panel .track-row:last-of-type{ border-bottom: none; }
-.hero-panel .track-row i{ color: var(--color-accent-300); }
-.hero-panel .badge{
-  align-self: flex-start;
-  font-size: 0.75rem;
-  color: var(--color-accent-200);
-  border: 1px solid var(--color-accent-700);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-}
-
-@media (max-width: 860px){
-  .hero-grid{ grid-template-columns: 1fr; }
-  .hero-panel{ order: -1; aspect-ratio: auto; }
-}
-
-/* ============ STAT BAND (the one saturated full-bleed section) ============ */
-.stat-band{
-  background: linear-gradient(120deg, var(--color-section) 0%, #1f1a4a 100%);
-  color: var(--color-section-text);
-  padding: var(--space-7) 0;
-  margin: var(--space-7) 0;
-}
-.stat-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
-}
-.stat-item .num{
-  font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500;
-  color: #fff;
-  display: block;
-}
-.stat-item .label{
-  font-size: 0.85rem;
-  color: rgba(240,238,251,0.72);
-  margin-top: 2px;
-}
-@media (max-width: 760px){
-  .stat-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ============ SECTION HEADERS ============ */
-.section{ padding: var(--space-7) 0; }
-.section-head{
-  max-width: 60ch;
-  margin-bottom: var(--space-6);
-}
-.section-head h2{ font-size: clamp(1.6rem, 3vw, 2.1rem); }
-
-/* ============ COURSE CARDS ============ */
-.card-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.card{
-  background: var(--color-neutral-800);
-  border: 1px solid var(--color-neutral-700);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  transition: border-color .15s ease, transform .15s ease;
-}
-.card:hover{
-  border-color: var(--color-accent-700);
-  transform: translateY(-2px);
-}
-.card.elev-md{ box-shadow: var(--shadow-md); }
-.card-kicker{ display:flex; gap: var(--space-2); margin-bottom: var(--space-3); }
-.card-title{
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: var(--space-2);
-}
-.card-body{
-  color: var(--color-neutral-300);
-  font-size: 0.92rem;
-  flex-grow: 1;
-}
-.card-meta{
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
-  font-size: 0.8rem;
-  color: var(--color-neutral-400);
-  margin: var(--space-4) 0;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-neutral-700);
-}
-.card-meta span{ display: flex; align-items: center; gap: 6px; }
-.card-price{
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-.card-price .amount{
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--color-text);
-}
-.card-price .cadence{
-  font-size: 0.8rem;
-  color: var(--color-neutral-500);
-}
-
-@media (max-width: 960px){
-  .card-grid{ grid-template-columns: 1fr; }
-}
-
-/* ============ TESTIMONIALS ============ */
-.t-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.t-card{
-  border: 1px solid var(--color-neutral-700);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  background: var(--color-neutral-800);
-}
-.t-card .stars{ color: var(--color-accent-300); font-size: 0.85rem; margin-bottom: var(--space-3); letter-spacing: 2px; }
-.t-card p{ color: var(--color-neutral-200); font-size: 0.95rem; }
-.t-who{
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-4);
-}
-.t-avatar{
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--color-accent-700);
-  background: var(--color-accent-900);
-  color: var(--color-accent-200);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 500;
-  font-family: var(--font-heading);
-}
-.t-who .name{ font-size: 0.88rem; color: var(--color-text); }
-.t-who .role{ font-size: 0.78rem; color: var(--color-neutral-500); }
-
-@media (max-width: 960px){
-  .t-grid{ grid-template-columns: 1fr; }
-}
-
-/* ============ FAQ ============ */
-.faq-list{
-  max-width: 760px;
-  border-top: 1px solid var(--color-neutral-700);
-}
-.faq-item{
-  border-bottom: 1px solid var(--color-neutral-700);
-}
-.faq-item summary{
-  list-style: none;
-  cursor: pointer;
-  padding: var(--space-5) 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--color-text);
-}
-.faq-item summary::-webkit-details-marker{ display: none; }
-.faq-item summary i{
-  color: var(--color-accent-300);
-  transition: transform .2s ease;
-  flex-shrink: 0;
-}
-.faq-item[open] summary i{ transform: rotate(45deg); }
-.faq-item p{
-  padding-bottom: var(--space-5);
-  max-width: 60ch;
-  color: var(--color-neutral-400);
-}
-
-/* ============ FINAL CTA ============ */
-.cta-band{
-  border: 1px solid var(--color-neutral-700);
-  border-radius: var(--radius-lg);
-  padding: var(--space-7) var(--space-6);
-  text-align: left;
-  background: radial-gradient(120% 160% at 0% 0%, var(--color-accent-900) 0%, transparent 60%), var(--color-neutral-800);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-.cta-band h2{ margin-bottom: var(--space-2); font-size: 1.7rem; }
-.cta-band p{ margin-bottom: 0; max-width: 46ch; }
-
-/* ============ FOOTER ============ */
-footer{
-  border-top: 1px solid var(--color-neutral-800);
-  padding: var(--space-7) 0 var(--space-6);
-  margin-top: var(--space-7);
-}
-.footer-grid{
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-.footer-brand .nav-brand{ margin-bottom: var(--space-3); }
-.footer-brand p{ max-width: 32ch; font-size: 0.88rem; }
-.footer-col h4{
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-neutral-500);
-  font-weight: 500;
-  margin-bottom: var(--space-3);
-}
-.footer-col a{
-  display: block;
-  padding: 6px 0;
-  font-size: 0.88rem;
-  color: var(--color-neutral-300);
-}
-.footer-col a:hover{ color: var(--color-accent-200); }
-.footer-bottom{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-neutral-800);
-  font-size: 0.8rem;
-  color: var(--color-neutral-500);
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
-.social-row{ display: flex; gap: var(--space-2); }
-
-@media (max-width: 760px){
-  .footer-grid{ grid-template-columns: 1fr 1fr; }
-  .footer-brand{ grid-column: 1 / -1; }
-  .cta-band{ text-align: left; flex-direction: column; align-items: flex-start; }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="announce" id="announceBar">
+  <div class="wrap">
+    <span><i class="ph ph-sparkle"></i> Launch offer — <strong>Practical AI for Everyone</strong> is £10. <a href="course-practical-ai.html">Start learning</a></span>
+    <button class="announce-close" id="announceClose" aria-label="Dismiss">✕</button>
+  </div>
+</div>
+
 <header class="nav" id="siteNav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <span class="mark"><i class="ph ph-sparkle"></i></span>
       Brookes AI
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#courses">Courses</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="#courses" class="btn btn-primary">Leverage AI</a>
+      <a href="course-practical-ai.html#buy" class="btn btn-primary">Buy the course</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <i class="ph ph-list"></i>
       </button>
@@ -656,192 +48,172 @@ footer{
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="kicker">AI education, built for where you are</span>
-        <h1>Learn to leverage AI — whatever your starting point.</h1>
-        <p class="lead">Three focused tracks: for industry specialists building the next generation of AI systems, for professionals putting AI to work in their careers, and for anyone who wants to use AI with confidence.</p>
+        <span class="kicker">Practical AI courses</span>
+        <h1>Practical AI skills for work and everyday life</h1>
+        <p class="lead">Learn how to use AI confidently, save time and get better results, with clear guidance from an MSc Artificial Intelligence graduate. No technical background required. No unnecessary jargon. Just practical lessons you can start using immediately.</p>
         <div class="hero-actions">
-          <a href="#courses" class="btn btn-primary">
-            Leverage AI <i class="ph ph-arrow-right"></i>
+          <a href="course-practical-ai.html#buy" class="btn btn-primary">
+            Start learning for £10 <i class="ph ph-arrow-right"></i>
           </a>
-          <a href="#testimonials" class="btn btn-secondary">See what learners say</a>
+          <a href="course-practical-ai.html" class="btn btn-secondary">See what's inside</a>
         </div>
         <div class="hero-note">
-          <i class="ph ph-check-circle"></i>
-          No experience required for two of the three tracks · Cancel anytime
+          <i class="ph ph-check-circle"></i> One-time payment · Lifetime access · No experience needed
         </div>
       </div>
+
       <div class="hero-panel">
-        <span class="badge">3 tracks · 1 platform</span>
+        <span class="badge">Launch course</span>
         <div>
-          <div class="track-row"><span><i class="ph ph-cpu"></i> Industry Specialists</span><span>Advanced</span></div>
-          <div class="track-row"><span><i class="ph ph-briefcase"></i> Professionals</span><span>Intermediate</span></div>
-          <div class="track-row"><span><i class="ph ph-user"></i> Everyone</span><span>Beginner</span></div>
+          <h3 style="margin-bottom: var(--space-2); font-size: 1.15rem;">Practical AI for Everyone</h3>
+          <div class="price-line">
+            <span class="amount">£10</span>
+            <span class="cadence" style="font-size:0.85rem; color: var(--color-neutral-400);">one-time</span>
+          </div>
         </div>
+        <ul>
+          <li><i class="ph ph-check"></i> Beginner-friendly, step by step</li>
+          <li><i class="ph ph-check"></i> Written by an MSc AI graduate</li>
+          <li><i class="ph ph-check"></i> Learn at your own pace</li>
+        </ul>
+        <a href="course-practical-ai.html#buy" class="btn btn-primary btn-block">Buy the course</a>
       </div>
     </div>
   </section>
 
-  <!-- STAT BAND -->
-  <div class="stat-band">
-    <div class="wrap stat-grid">
-      <div class="stat-item"><span class="num">12,400+</span><span class="label">learners enrolled</span></div>
-      <div class="stat-item"><span class="num">3</span><span class="label">focused learning tracks</span></div>
-      <div class="stat-item"><span class="num">40+</span><span class="label">hours of course content</span></div>
-      <div class="stat-item"><span class="num">4.8/5</span><span class="label">average learner rating</span></div>
+  <!-- TRUST STRIP -->
+  <div class="wrap">
+    <div class="trust-strip">
+      <div class="item">
+        <i class="ph ph-graduation-cap"></i>
+        <div><div class="t">MSc in Artificial Intelligence</div><div class="d">Real, postgraduate-level expertise</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-chats-circle"></i>
+        <div><div class="t">Plain English, no jargon</div><div class="d">Nothing you need a glossary for</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-target"></i>
+        <div><div class="t">Practical, not theoretical</div><div class="d">Built around real, everyday tasks</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-lightning"></i>
+        <div><div class="t">Use it immediately</div><div class="d">Apply each lesson the same day</div></div>
+      </div>
     </div>
   </div>
 
-  <!-- COURSES -->
-  <section class="section" id="courses">
+  <!-- POSITIONING -->
+  <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Three tracks, one goal</span>
-        <h2>Choose the track that fits you</h2>
-        <p>Every track is built by practitioners, kept current as the field moves, and ends with a certificate you can put on your résumé.</p>
-      </div>
-
-      <div class="card-grid">
-
-        <!-- Card 1: Specialists -->
-        <article class="card elev-md">
-          <div class="card-kicker">
-            <span class="tag tag-accent">Advanced</span>
-            <span class="tag tag-outline">Technical</span>
-          </div>
-          <h3 class="card-title">AI for Industry Specialists</h3>
-          <p class="card-body">For ML engineers, data scientists, and technical leads building and deploying AI systems in production. Covers model architecture, fine-tuning, evaluation, and responsible deployment at scale.</p>
-          <div class="card-meta">
-            <span><i class="ph ph-clock"></i> 60 hours</span>
-            <span><i class="ph ph-certificate"></i> Certificate</span>
-            <span><i class="ph ph-users-three"></i> Cohort-based</span>
-          </div>
-          <div class="card-price">
-            <span class="amount">$1,499</span>
-            <span class="cadence">one-time · next cohort Sept 2026</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-block">Enroll in Specialists</a>
-        </article>
-
-        <!-- Card 2: Professionals -->
-        <article class="card elev-md">
-          <div class="card-kicker">
-            <span class="tag tag-accent">Intermediate</span>
-            <span class="tag tag-outline">Applied</span>
-          </div>
-          <h3 class="card-title">AI for Professionals</h3>
-          <p class="card-body">For managers, consultants, marketers, and operators who want to put AI to work — prompt design, workflow automation, and building a personal AI toolkit that saves hours every week.</p>
-          <div class="card-meta">
-            <span><i class="ph ph-clock"></i> 24 hours</span>
-            <span><i class="ph ph-certificate"></i> Certificate</span>
-            <span><i class="ph ph-infinity"></i> Self-paced</span>
-          </div>
-          <div class="card-price">
-            <span class="amount">$499</span>
-            <span class="cadence">one-time · lifetime access</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-block">Enroll in Professionals</a>
-        </article>
-
-        <!-- Card 3: Everyone -->
-        <article class="card elev-md">
-          <div class="card-kicker">
-            <span class="tag tag-accent">Beginner</span>
-            <span class="tag tag-outline">Practical</span>
-          </div>
-          <h3 class="card-title">AI for Everyone</h3>
-          <p class="card-body">No technical background required. Learn to use ChatGPT and everyday AI tools with confidence — for work, home, planning, writing, and everything in between.</p>
-          <div class="card-meta">
-            <span><i class="ph ph-clock"></i> 8 hours</span>
-            <span><i class="ph ph-certificate"></i> Certificate</span>
-            <span><i class="ph ph-infinity"></i> Self-paced</span>
-          </div>
-          <div class="card-price">
-            <span class="amount">$149</span>
-            <span class="cadence">one-time · lifetime access</span>
-          </div>
-          <a href="#" class="btn btn-primary btn-block">Enroll in Everyone</a>
-        </article>
-
+        <span class="kicker">Why Brookes AI</span>
+        <h2>Cut through the noise</h2>
+        <p>There's a lot of AI advice online — much of it vague, repetitive, or written by people with no real background in the subject. Brookes AI is different. Every course is created by someone with a postgraduate degree in Artificial Intelligence, and focused entirely on outcomes you can feel: saving you time, building your confidence, and helping you get better results from the tools you already use.</p>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section" id="testimonials">
+  <!-- COURSE SPOTLIGHT -->
+  <section class="section" id="course" style="padding-top:0;">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">What learners say</span>
-        <h2>Trusted by specialists, professionals, and beginners alike</h2>
+        <span class="kicker">Launch course · £10</span>
+        <h2>Practical AI for Everyone</h2>
+        <p>A practical, beginner-friendly course showing you how to use AI confidently in everyday situations — no technical background or previous AI experience required.</p>
       </div>
 
-      <div class="t-grid">
-        <div class="t-card">
-          <div class="stars">★★★★★</div>
-          <p>"The Specialists track took me from fine-tuning novice to shipping a production model in six weeks. The feedback from mentors was worth the price alone."</p>
-          <div class="t-who">
-            <span class="t-avatar">PN</span>
-            <div>
-              <div class="name">Priya N.</div>
-              <div class="role">ML Engineer</div>
-            </div>
-          </div>
-        </div>
-        <div class="t-card">
-          <div class="stars">★★★★★</div>
-          <p>"I automated three weekly reports with what I learned in module two. It paid for itself before I'd even finished the course."</p>
-          <div class="t-who">
-            <span class="t-avatar">MT</span>
-            <div>
-              <div class="name">Marcus T.</div>
-              <div class="role">Operations Manager</div>
-            </div>
-          </div>
-        </div>
-        <div class="t-card">
-          <div class="stars">★★★★★</div>
-          <p>"I was intimidated by AI. Now I use it every single day without thinking twice — planning trips, writing letters, all of it."</p>
-          <div class="t-who">
-            <span class="t-avatar">GO</span>
-            <div>
-              <div class="name">Grace O.</div>
-              <div class="role">Retired Teacher</div>
-            </div>
-          </div>
+      <div style="display:grid; grid-template-columns: minmax(0,1fr) 320px; gap: var(--space-8); align-items:start;">
+        <ul class="check-grid" style="border-top:1px solid var(--color-neutral-800); padding-top: var(--space-2);">
+          <li class="check-item"><i class="ph ph-check"></i> Writing and improving text</li>
+          <li class="check-item"><i class="ph ph-check"></i> Researching unfamiliar subjects</li>
+          <li class="check-item"><i class="ph ph-check"></i> Planning tasks and projects</li>
+          <li class="check-item"><i class="ph ph-check"></i> Writing better prompts and instructions</li>
+          <li class="check-item"><i class="ph ph-check"></i> Checking whether AI information is accurate</li>
+          <li class="check-item"><i class="ph ph-check"></i> Protecting personal and sensitive information</li>
+        </ul>
+
+        <div class="pricing-card" style="position: static;">
+          <div class="amount-row"><span class="amount">£10</span><span class="cadence">one-time payment</span></div>
+          <p style="font-size:0.88rem; margin-bottom:0;">Lifetime access. Learn at your own pace.</p>
+          <a href="course-practical-ai.html#buy" class="btn btn-primary btn-block" style="margin-top: var(--space-4);">Buy the course</a>
+          <a href="course-practical-ai.html" class="btn btn-ghost btn-block" style="margin-top: var(--space-2);">See the full syllabus</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
+  <!-- COMING SOON -->
+  <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Questions</span>
-        <h2>Frequently asked questions</h2>
+        <span class="kicker">Coming soon</span>
+        <h2>More courses on the way</h2>
+        <p>Practical AI for Everyone is just the start. Two more courses are in development.</p>
+      </div>
+
+      <div class="card-grid cols-2">
+        <article class="card is-soon">
+          <div class="card-kicker">
+            <span class="tag tag-soon"><i class="ph ph-clock"></i> Coming soon</span>
+          </div>
+          <h3 class="card-title">AI for Work</h3>
+          <p class="card-body">For managers and professionals who want to save time, improve their work and avoid falling behind as AI becomes part of everyday working life. Covers writing, summarising, research, meeting preparation, reports and decision support.</p>
+          <div class="card-price"><span class="amount">~£30</span><span class="cadence">expected price</span></div>
+          <a href="courses.html" class="btn btn-disabled btn-block" aria-disabled="true">Coming soon</a>
+        </article>
+
+        <article class="card is-soon">
+          <div class="card-kicker">
+            <span class="tag tag-soon"><i class="ph ph-clock"></i> Coming soon</span>
+          </div>
+          <h3 class="card-title">Build and Launch a Website with AI</h3>
+          <p class="card-body">For beginners, creators and small-business owners who want to plan, create and publish a professional website using AI tools — no development experience needed.</p>
+          <div class="card-price"><span class="amount">~£30</span><span class="cadence">expected price</span></div>
+          <a href="courses.html" class="btn btn-disabled btn-block" aria-disabled="true">Coming soon</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="section">
+    <div class="wrap">
+      <div class="founder-row">
+        <div class="avatar-lg">JB</div>
+        <div>
+          <span class="kicker">Who's behind Brookes AI</span>
+          <h2 style="font-size:1.5rem;">Built on real expertise, explained simply</h2>
+          <p>Brookes AI courses are created by someone with an MSc in Artificial Intelligence — so the guidance you get is grounded in a genuine, technical understanding of how AI works, translated into plain English. No recycled blog advice, no generic prompts copied from somewhere else.</p>
+          <a href="about.html" class="btn btn-secondary">More about Brookes AI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ PREVIEW -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Common questions</span>
+        <h2>Before you start</h2>
       </div>
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Do I need a technical background?<i class="ph ph-plus"></i></summary>
-          <p>Only for the Industry Specialists track, which assumes comfort with Python and basic ML concepts. Professionals and Everyone require no coding experience at all.</p>
+          <summary>Do I need any experience with AI? <i class="ph ph-plus"></i></summary>
+          <p>No. Practical AI for Everyone is built for complete beginners — no technical background or previous AI experience required.</p>
         </details>
         <details class="faq-item">
-          <summary>Is the course self-paced or scheduled?<i class="ph ph-plus"></i></summary>
-          <p>Professionals and Everyone are fully self-paced with lifetime access. Industry Specialists runs in scheduled cohorts with live mentor sessions, starting quarterly.</p>
+          <summary>What do I get when I buy the course? <i class="ph ph-plus"></i></summary>
+          <p>Lifetime access to plain-English lessons that you can work through at your own pace, and revisit whenever you like.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens after I enroll?<i class="ph ph-plus"></i></summary>
-          <p>You'll get instant access to your course dashboard, a welcome email with a suggested schedule, and access to the learner community for your track.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do you offer refunds?<i class="ph ph-plus"></i></summary>
-          <p>Yes — every track comes with a 14-day, no-questions-asked refund policy from your enrollment date.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I switch tracks after enrolling?<i class="ph ph-plus"></i></summary>
-          <p>Yes, within the first 14 days. Just contact support and we'll move you and apply any price difference as a credit.</p>
+          <summary>Will there be more courses? <i class="ph ph-plus"></i></summary>
+          <p>Yes — AI for Work and Build and Launch a Website with AI are both in development, each expected to cost around £30.</p>
         </details>
       </div>
+      <p style="margin-top: var(--space-5);"><a href="faq.html" class="btn btn-ghost">Read the full FAQ <i class="ph ph-arrow-right"></i></a></p>
     </div>
   </section>
 
@@ -850,10 +222,10 @@ footer{
     <div class="wrap">
       <div class="cta-band">
         <div>
-          <h2>Ready to leverage AI?</h2>
-          <p>Pick your track and start today. No commitment past your first 14 days.</p>
+          <h2>Ready to use AI with confidence?</h2>
+          <p>Start with Practical AI for Everyone — a one-off £10 payment, lifetime access, no jargon.</p>
         </div>
-        <a href="#courses" class="btn btn-primary">Leverage AI <i class="ph ph-arrow-right"></i></a>
+        <a href="course-practical-ai.html#buy" class="btn btn-primary">Start learning for £10 <i class="ph ph-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -864,23 +236,23 @@ footer{
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#top" class="nav-brand">
+        <a href="index.html" class="nav-brand">
           <span class="mark"><i class="ph ph-sparkle"></i></span>
           Brookes AI
         </a>
-        <p>AI education built for wherever you're starting from — specialists, professionals, and everyone else.</p>
+        <p>Practical AI skills for work and everyday life — clear guidance from an MSc Artificial Intelligence graduate.</p>
       </div>
       <div class="footer-col">
         <h4>Courses</h4>
-        <a href="#courses">Industry Specialists</a>
-        <a href="#courses">Professionals</a>
-        <a href="#courses">Everyone</a>
+        <a href="course-practical-ai.html">Practical AI for Everyone</a>
+        <span class="plain">AI for Work — soon</span>
+        <span class="plain">Build a Website with AI — soon</span>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="mailto:hello@brookes.ai">Contact</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
@@ -891,52 +263,11 @@ footer{
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Brookes AI. All rights reserved.</span>
-      <div class="social-row">
-        <a href="#" class="btn btn-icon" aria-label="X / Twitter"><i class="ph ph-x-logo"></i></a>
-        <a href="#" class="btn btn-icon" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-        <a href="#" class="btn btn-icon" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
-      </div>
+      <span>Hello@brookesai.co.uk</span>
     </div>
   </div>
 </footer>
 
-<script>
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Nav shadow on scroll
-  var nav = document.getElementById('siteNav');
-  window.addEventListener('scroll', function(){
-    nav.classList.toggle('scrolled', window.scrollY > 8);
-  });
-
-  // Mobile nav toggle
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  toggle.addEventListener('click', function(){
-    var isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.innerHTML = isOpen ? '<i class="ph ph-x"></i>' : '<i class="ph ph-list"></i>';
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', false);
-      toggle.innerHTML = '<i class="ph ph-list"></i>';
-    });
-  });
-
-  // Only one FAQ item open at a time
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    item.addEventListener('toggle', function(){
-      if(item.open){
-        document.querySelectorAll('.faq-item').forEach(function(other){
-          if(other !== item) other.open = false;
-        });
-      }
-    });
-  });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
