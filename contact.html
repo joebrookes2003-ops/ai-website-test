@@ -3,89 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | Brookes AI</title>
-<meta name="description" content="Questions about a Brookes AI course? Want to be notified when new courses launch? Get in touch.">
+<title>Get in touch | Brookes AI</title>
+<meta name="description" content="Ask a question before you buy, or find out when the next courses are ready. It's Joe who reads the emails.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="announce" id="announceBar">
-  <div class="wrap">
-    <span><i class="ph ph-sparkle"></i> Launch offer — <strong>Practical AI for Everyone</strong> is £10. <a href="course-practical-ai.html">Start learning</a></span>
-    <button class="announce-close" id="announceClose" aria-label="Dismiss">✕</button>
-  </div>
-</div>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <header class="nav" id="siteNav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <span class="mark"><i class="ph ph-sparkle"></i></span>
+      <span class="mark"><i class="ph ph-compass"></i></span>
       Brookes AI
     </a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="courses.html">Courses</a>
+      <a href="free-course.html">Free course</a>
+      <a href="full-course.html">Full course</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html" aria-current="page">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="course-practical-ai.html#buy" class="btn btn-primary">Buy the course</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <a href="free-course.html" class="btn btn-primary">Start free</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
         <i class="ph ph-list"></i>
       </button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 
   <section class="page-hero">
     <div class="wrap">
-      <span class="kicker">Get in touch</span>
-      <h1>Contact Brookes AI</h1>
-      <p class="lead">Questions about a course before you buy? Want to know when new courses launch? Send a message and we'll get back to you.</p>
+      <span class="kicker">Contact</span>
+      <h1>Get in touch</h1>
+      <p class="lead">There's no support desk and no chatbot. It's me, and I read everything.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap contact-grid">
 
-      <form id="contactForm" novalidate>
-        <div class="field">
-          <label for="cf-name">Name</label>
-          <input class="input" type="text" id="cf-name" name="name" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="cf-email">Email</label>
-          <input class="input" type="email" id="cf-email" name="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="cf-message">Message</label>
-          <textarea class="input" id="cf-message" name="message" required placeholder="What can we help with?"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send message <i class="ph ph-paper-plane-tilt"></i></button>
-        <p id="contactStatus" class="form-status" role="status"></p>
-        <p class="field-hint">This opens your email app with your message ready to send to hello@brookesai.co.uk.</p>
-      </form>
+      <div>
+        <h2 style="font-size:1.4rem;">Send me a message</h2>
+        <p class="muted">Questions before you buy are welcome — that's what this is for. So are corrections, if you find something I've got wrong.</p>
+
+        <form id="contactForm" novalidate style="margin-top: var(--space-5);">
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input class="input" type="text" id="cf-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Your email</label>
+            <input class="input" type="email" id="cf-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea class="input" id="cf-message" name="message" required placeholder="What can I help with?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send it <i class="ph ph-paper-plane-tilt"></i></button>
+          <p id="contactStatus" class="form-status" role="status"></p>
+          <p class="field-hint">This opens your own email app with the message ready — so you can see exactly what's being sent, and you keep a copy.</p>
+        </form>
+      </div>
 
       <aside>
         <div class="info-card">
           <div class="row">
             <i class="ph ph-envelope-simple"></i>
-            <div><div class="t">Email</div><p class="d">hello@brookesai.co.uk</p></div>
+            <div>
+              <div class="t">Email me directly</div>
+              <p class="d"><a href="mailto:hello@brookesai.com">hello@brookesai.com</a></p>
+            </div>
           </div>
           <div class="row">
             <i class="ph ph-clock"></i>
-            <div><div class="t">Response time</div><p class="d">We usually reply within 1–2 working days.</p></div>
+            <div>
+              <div class="t">Reply time</div>
+              <p class="d">Usually a day or two. If it's been longer, do chase me — it'll have gone astray rather than been ignored.</p>
+            </div>
           </div>
           <div class="row">
             <i class="ph ph-question"></i>
-            <div><div class="t">Quick question?</div><p class="d">Check the <a href="faq.html" style="text-decoration:underline;">FAQ page</a> first — it covers most of what people ask.</p></div>
+            <div>
+              <div class="t">Quicker than waiting</div>
+              <p class="d">The <a href="faq.html">questions page</a> covers most of what people ask, including refunds and what's in each course.</p>
+            </div>
+          </div>
+          <div class="row">
+            <i class="ph ph-arrow-counter-clockwise"></i>
+            <div>
+              <div class="t">Want a refund?</div>
+              <p class="d">Just say so — within 30 days, no explanation needed. Include the email you bought with and I'll sort it.</p>
+            </div>
           </div>
         </div>
       </aside>
@@ -93,17 +110,17 @@
     </div>
   </section>
 
-  <!-- COMING SOON NOTIFY -->
-  <section class="section" style="padding-top:0;">
+  <!-- NOTIFY -->
+  <section class="section section-alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Coming soon</span>
-        <h2>Want to know when new courses launch?</h2>
-        <p>Leave your email and we'll let you know as soon as AI for Work or Build and Launch a Website with AI are ready.</p>
+        <span class="kicker">Coming later</span>
+        <h2>Want telling when the next courses are ready?</h2>
+        <p><strong>AI for Work</strong> — for managers and professionals — and <strong>Build and Launch a Website with AI</strong> are both being written. Leave your email and I'll let you know when each one's out. Nothing else, ever.</p>
       </div>
-      <form class="notify-form" style="max-width:480px;">
-        <input class="input" type="email" placeholder="you@example.com" aria-label="Email address" required>
-        <button type="submit" class="btn btn-primary">Notify me</button>
+      <form class="capture-form" data-capture="Tell me when the next Brookes AI course is ready" data-to="hello@brookesai.com" style="max-width:480px;">
+        <input class="input" type="email" placeholder="your@email.com" aria-label="Your email address" required>
+        <button type="submit" class="btn btn-primary">Let me know</button>
       </form>
       <p class="form-status" role="status"></p>
     </div>
@@ -116,33 +133,36 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="nav-brand">
-          <span class="mark"><i class="ph ph-sparkle"></i></span>
+          <span class="mark"><i class="ph ph-compass"></i></span>
           Brookes AI
         </a>
-        <p>Practical AI skills for work and everyday life — clear guidance from an MSc Artificial Intelligence graduate.</p>
+        <p>Practical AI, explained properly. Written by Joe Brookes, MSc Artificial Intelligence.</p>
       </div>
       <div class="footer-col">
         <h4>Courses</h4>
-        <a href="course-practical-ai.html">Practical AI for Everyone</a>
+        <a href="free-course.html">AI in 30 Minutes — free</a>
+        <a href="full-course.html">The Complete Course — £13.99</a>
         <span class="plain">AI for Work — soon</span>
-        <span class="plain">Build a Website with AI — soon</span>
+        <span class="plain">Websites with AI — soon</span>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4>The free lessons</h4>
+        <a href="lesson-1.html">1 · What it actually is</a>
+        <a href="lesson-2.html">2 · Getting set up</a>
+        <a href="lesson-3.html">3 · Your first real win</a>
+        <a href="lesson-4.html">4 · Staying safe</a>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-        <a href="#">Refund policy</a>
+        <a href="cheat-sheet.html">Cheat sheet</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> Brookes AI. All rights reserved.</span>
-      <span>Hello@brookesai.co.uk</span>
+      <span>© <span id="year"></span> Brookes AI</span>
+      <span>hello@brookesai.com</span>
     </div>
   </div>
 </footer>

@@ -1,38 +1,74 @@
-// Brookes AI — shared site behaviour (vanilla JS, no dependencies)
+/* ==========================================================================
+   Brookes AI — site behaviour
+   Vanilla JS, no dependencies, no tracking.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   >>> CHECKOUT LINK — EDIT THIS ONE LINE <<<
+
+   Paste your Stripe Payment Link / Gumroad / Payhip URL between the quotes.
+   Every "Buy the course" button on the site will point at it automatically.
+
+   While it is left empty, those buttons show a friendly "not open yet" note
+   instead of leading people to a dead end.
+   -------------------------------------------------------------------------- */
+var CHECKOUT_URL = '';
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Footer year
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  /* ---- Wire up every buy button ---- */
+  document.querySelectorAll('[data-buy]').forEach(function (el) {
+    if (CHECKOUT_URL) {
+      el.setAttribute('href', CHECKOUT_URL);
+    } else {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var note = document.getElementById('buyNote');
+        if (note) {
+          note.hidden = false;
+          note.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          window.location.href = 'contact.html';
+        }
+      });
+    }
+  });
 
-  // Nav shadow on scroll
+  /* ---- Footer year ---- */
+  document.querySelectorAll('#year').forEach(function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
+  /* ---- Nav shadow on scroll ---- */
   var nav = document.getElementById('siteNav');
   if (nav) {
-    window.addEventListener('scroll', function () {
+    var onScroll = function () {
       nav.classList.toggle('scrolled', window.scrollY > 8);
-    });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  // Mobile nav toggle
+  /* ---- Mobile nav ---- */
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
   if (toggle && links) {
     toggle.addEventListener('click', function () {
       var isOpen = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       toggle.innerHTML = isOpen ? '<i class="ph ph-x"></i>' : '<i class="ph ph-list"></i>';
     });
     links.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', false);
+        toggle.setAttribute('aria-expanded', 'false');
         toggle.innerHTML = '<i class="ph ph-list"></i>';
       });
     });
   }
 
-  // Only one FAQ item open at a time (per list)
+  /* ---- FAQ: one open at a time, per list ---- */
   document.querySelectorAll('.faq-list').forEach(function (list) {
     var items = list.querySelectorAll('.faq-item');
     items.forEach(function (item) {
@@ -46,22 +82,98 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Dismissible announcement bar (remembered via localStorage)
+  /* ---- Dismissible announcement bar ---- */
   var announce = document.getElementById('announceBar');
   var announceClose = document.getElementById('announceClose');
   if (announce) {
-    if (localStorage.getItem('brookesai_banner_dismissed') === '1') {
-      announce.classList.add('hidden');
-    }
+    try {
+      if (localStorage.getItem('brookesai_banner') === 'closed') {
+        announce.classList.add('hidden');
+      }
+    } catch (e) { /* storage unavailable — show the bar */ }
+
     if (announceClose) {
       announceClose.addEventListener('click', function () {
         announce.classList.add('hidden');
-        localStorage.setItem('brookesai_banner_dismissed', '1');
+        try { localStorage.setItem('brookesai_banner', 'closed'); } catch (e) {}
       });
     }
   }
 
-  // Contact form — builds a mailto link from the fields (no backend on this static site)
+  /* ---- Free course progress ----
+     Each lesson page sets data-lesson="1".."4" on <body>.
+     We remember which lessons have been opened, and mark them on the hub. */
+  var LESSONS_KEY = 'brookesai_lessons_done';
+
+  function readProgress() {
+    try {
+      var raw = localStorage.getItem(LESSONS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+
+  function writeProgress(list) {
+    try { localStorage.setItem(LESSONS_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+
+  var thisLesson = document.body.getAttribute('data-lesson');
+  if (thisLesson) {
+    var done = readProgress();
+    if (done.indexOf(thisLesson) === -1) {
+      done.push(thisLesson);
+      writeProgress(done);
+    }
+  }
+
+  // Mark completed lessons on the hub page
+  var progress = readProgress();
+  document.querySelectorAll('[data-lesson-marker]').forEach(function (el) {
+    var n = el.getAttribute('data-lesson-marker');
+    if (progress.indexOf(n) !== -1) {
+      el.classList.add('done');
+      var badge = el.querySelector('[data-done-badge]');
+      if (badge) badge.hidden = false;
+    }
+  });
+
+  // Progress rail on lesson pages
+  document.querySelectorAll('.progress-rail .seg').forEach(function (seg, i) {
+    var current = parseInt(thisLesson || '0', 10);
+    if (i + 1 <= current) seg.classList.add('done');
+  });
+
+  /* ---- Cheat sheet / notify email capture ----
+     No backend on a static site. We confirm to the reader honestly and
+     hand off to email so nothing is silently swallowed. */
+  document.querySelectorAll('[data-capture]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = form.querySelector('input[type="email"]');
+      var status = form.parentElement.querySelector('.form-status');
+      var subject = form.getAttribute('data-capture') || 'Brookes AI';
+
+      if (!input || !input.value.trim() || input.value.indexOf('@') === -1) {
+        if (status) {
+          status.textContent = 'That doesn’t look like an email address — could you check it?';
+          status.className = 'form-status visible';
+        }
+        return;
+      }
+
+      var address = form.getAttribute('data-to') || 'hello@brookesai.com';
+      var body = encodeURIComponent('Please send this to: ' + input.value.trim());
+      window.location.href = 'mailto:' + address +
+        '?subject=' + encodeURIComponent(subject) + '&body=' + body;
+
+      if (status) {
+        status.textContent = 'Opening your email app — just press send and I’ll get it over to you.';
+        status.className = 'form-status visible ok';
+      }
+      form.reset();
+    });
+  });
+
+  /* ---- Contact form ---- */
   var contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -73,40 +185,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (!name || !email || !message) {
         if (status) {
-          status.textContent = 'Please fill in your name, email and message before sending.';
+          status.textContent = 'Could you fill in your name, email and message before sending?';
           status.className = 'form-status visible';
         }
         return;
       }
 
-      var subject = encodeURIComponent('Website enquiry from ' + name);
-      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      var mailto = 'mailto:hello@brookesai.co.uk?subject=' + subject + '&body=' + body;
+      var subject = encodeURIComponent('Message from ' + name);
+      var body = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
+      window.location.href = 'mailto:hello@brookesai.com?subject=' + subject + '&body=' + body;
 
       if (status) {
-        status.textContent = 'Opening your email app to send this message…';
+        status.textContent = 'Opening your email app — press send and it’ll come straight to me.';
         status.className = 'form-status visible ok';
       }
-      window.location.href = mailto;
     });
   }
 
-  // "Get notified" forms on coming-soon courses — client-side only confirmation
-  document.querySelectorAll('.notify-form').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+  /* ---- Print button (cheat sheet) ---- */
+  document.querySelectorAll('[data-print]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var input = form.querySelector('input[type="email"]');
-      var status = form.parentElement.querySelector('.form-status');
-      if (input && status) {
-        if (!input.value.trim()) {
-          status.textContent = 'Please enter your email address.';
-          status.className = 'form-status visible';
-          return;
-        }
-        status.textContent = 'Thanks — we\'ll let you know as soon as this course launches.';
-        status.className = 'form-status visible ok';
-        form.reset();
-      }
+      window.print();
     });
   });
 
