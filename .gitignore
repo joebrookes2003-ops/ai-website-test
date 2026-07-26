@@ -1,0 +1,9 @@
+# AI tooling — not part of the published site
+.claude/
+.cursor/
+.windsurf/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
