@@ -614,6 +614,32 @@ a.module.done .m-title::after{
 .callout-do{ background: var(--good-soft); border-color: #c3d9c4; }
 .callout-do .c-head i{ color: var(--good); }
 
+/* "The full course goes further" inline note — quiet, not a nag */
+.goes-further{
+  border-left: 2px solid var(--accent-mid);
+  padding: 2px 0 2px var(--space-4);
+  margin: 0 0 var(--space-5);
+  font-size: 0.92rem;
+  color: var(--ink-3);
+}
+.goes-further strong{ color: var(--ink-2); font-weight: 600; }
+.goes-further a{ color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.goes-further .gf-label{
+  display: block; font-family: var(--font-body);
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-4); font-weight: 700; margin-bottom: 3px;
+}
+
+/* Still-hard list — the honest gap between free and paid */
+.gap-list{ margin: var(--space-4) 0; }
+.gap-list li{
+  display: flex; align-items: flex-start; gap: var(--space-3);
+  padding: 9px 0; border-top: 1px solid var(--line);
+  font-size: 0.95rem; color: var(--ink-2);
+}
+.gap-list li:first-child{ border-top: none; }
+.gap-list li i{ color: var(--warm-text); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+
 /* Lesson header / meta */
 .lesson-head{ margin-bottom: var(--space-6); }
 .lesson-meta{
@@ -676,22 +702,25 @@ textarea.input{ resize: vertical; min-height: 150px; line-height: 1.6; }
 .form-status.ok{ color: var(--good); font-weight: 500; }
 
 /* ============ ABOUT / FOUNDER ============ */
-.founder-row{ display: grid; grid-template-columns: 240px 1fr; gap: var(--space-7); align-items: start; }
-.photo-slot{
-  width: 100%; aspect-ratio: 1/1;
-  border-radius: var(--radius-lg);
-  background: var(--paper-3);
-  border: 1px dashed var(--line-strong);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  color: var(--ink-4); text-align: center; padding: var(--space-4);
-  overflow: hidden;
+.founder-row{ display: grid; grid-template-columns: 260px 1fr; gap: var(--space-7); align-items: start; }
+.bio-card{
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
 }
-.photo-slot i{ font-size: 2rem; margin-bottom: var(--space-2); }
-.photo-slot .ps-label{ font-size: 0.78rem; line-height: 1.4; }
-.photo-slot img{ width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+.bio-name{ font-family: var(--font-heading); font-weight: 600; font-size: 1.15rem; color: var(--ink); }
+.bio-role{ font-size: 0.86rem; color: var(--ink-3); margin-top: 2px; padding-bottom: var(--space-4); border-bottom: 1px solid var(--line); }
+.bio-card ul{ margin-top: var(--space-4); }
+.bio-card li{
+  display: flex; align-items: flex-start; gap: var(--space-3);
+  font-size: 0.88rem; color: var(--ink-2); padding: 6px 0;
+}
+.bio-card li i{ color: var(--accent); font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
 @media (max-width: 760px){
   .founder-row{ grid-template-columns: 1fr; gap: var(--space-5); }
-  .photo-slot{ max-width: 200px; }
 }
 
 /* ============ COMPARE ============ */
