@@ -320,6 +320,16 @@ em{ font-style: italic; }
 .section-head{ max-width: 62ch; margin-bottom: var(--space-6); }
 .section-alt{ background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+/* ============ THANK YOU ============ */
+.thanks-mark{
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--good-soft); color: var(--good);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; margin-bottom: var(--space-5);
+}
+.footer-legal a{ display: inline; padding: 0; color: var(--ink-3); }
+.footer-legal a:hover{ color: var(--accent); text-decoration: underline; }
+
 /* ============ PROOF BAND ============
    Step 2 of the Trust & Authority pattern: hero -> proof -> solution -> CTA.
    The one saturated field on the page; everything else stays on the slate ground. */

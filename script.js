@@ -3,25 +3,55 @@
    Vanilla JS, no dependencies, no tracking.
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   >>> CHECKOUT LINK — EDIT THIS ONE LINE <<<
+/* ==========================================================================
+   >>> CHECKOUT — THIS IS THE ONLY BIT YOU NEED TO EDIT <<<
 
-   Paste your Stripe Payment Link / Gumroad / Payhip URL between the quotes.
-   Every "Buy the course" button on the site will point at it automatically.
+   1. Create the product in Payhip and upload
+      assets/brookes-ai-complete-course.pdf
+   2. Payhip gives you a link like  https://payhip.com/b/AbCd1
+      The bit after /b/ is your product ID — here, AbCd1
+   3. Paste that ID between the quotes below. That's it.
 
-   While it is left empty, those buttons show a friendly "not open yet" note
-   instead of leading people to a dead end.
-   -------------------------------------------------------------------------- */
+   Every "Get the course" button on the site then opens the Payhip checkout
+   as an overlay, so the buyer never leaves brookesai.com.
+
+   While it's left empty, those buttons show a polite "not open yet" note
+   rather than leading anyone to a dead end.
+   ========================================================================== */
+var PAYHIP_PRODUCT_ID = '';
+
+/* Optional: if you ever move away from Payhip, put the full checkout URL here
+   instead and it takes priority over the product ID above. */
 var CHECKOUT_URL = '';
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- Wire up every buy button ---- */
-  document.querySelectorAll('[data-buy]').forEach(function (el) {
-    if (CHECKOUT_URL) {
-      el.setAttribute('href', CHECKOUT_URL);
-    } else {
+  var buyButtons = document.querySelectorAll('[data-buy]');
+
+  if (PAYHIP_PRODUCT_ID && !CHECKOUT_URL) {
+    // Load Payhip's overlay script once, on demand.
+    if (!document.getElementById('payhip-js')) {
+      var s = document.createElement('script');
+      s.id = 'payhip-js';
+      s.src = 'https://payhip.com/payhip.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    buyButtons.forEach(function (el) {
+      el.setAttribute('href', 'https://payhip.com/b/' + PAYHIP_PRODUCT_ID);
+      el.classList.add('payhip-buy-button');
+      el.setAttribute('data-product', PAYHIP_PRODUCT_ID);
+      el.setAttribute('data-theme', 'none');   // keep our own button styling
+    });
+
+  } else if (CHECKOUT_URL) {
+    buyButtons.forEach(function (el) { el.setAttribute('href', CHECKOUT_URL); });
+
+  } else {
+    // Nothing configured yet — fail politely instead of silently.
+    buyButtons.forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.preventDefault();
         var note = document.getElementById('buyNote');
@@ -32,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = 'contact.html';
         }
       });
-    }
-  });
+    });
+  }
 
   /* ---- Footer year ---- */
   document.querySelectorAll('#year').forEach(function (el) {

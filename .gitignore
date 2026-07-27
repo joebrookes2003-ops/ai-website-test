@@ -1,3 +1,23 @@
+# =============================================================================
+#  PAID PRODUCT — NEVER COMMIT, NEVER DEPLOY
+#
+#  Cloudflare Pages serves every file in this repo at a public URL. Anything
+#  a customer pays for must stay OUT of the repo, or people can simply guess
+#  the address and download it for nothing.
+#
+#  Master copies live in _private/ on your own machine. Upload them to Payhip
+#  from there, and back that folder up somewhere that isn't GitHub — iCloud,
+#  Dropbox, an external drive.
+# =============================================================================
+_private/
+*.pdf
+full course.md
+brookes-ai-free-course.md
+
+# Internal notes — no reason to publish these
+SETUP-CHECKOUT.md
+Nocturne Design System.md
+
 # AI tooling — not part of the published site
 .claude/
 .cursor/
