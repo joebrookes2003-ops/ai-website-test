@@ -1,243 +1,227 @@
 /* ==========================================================================
    Brookes AI — site behaviour
-   Vanilla JS, no dependencies, no tracking.
+   Vanilla JS, no dependencies. Loaded with `defer`.
    ========================================================================== */
+(function () {
+  'use strict';
 
-/* ==========================================================================
-   >>> CHECKOUT — THIS IS THE ONLY BIT YOU NEED TO EDIT <<<
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-   1. Create the product in Payhip and upload
-      assets/brookes-ai-complete-course.pdf
-   2. Payhip gives you a link like  https://payhip.com/b/AbCd1
-      The bit after /b/ is your product ID — here, AbCd1
-   3. Paste that ID between the quotes below. That's it.
+  /* ------------------------------------------------------------------
+     1. Current year in footer
+     ------------------------------------------------------------------ */
+  var yearEl = $('#year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-   Every "Get the course" button on the site then opens the Payhip checkout
-   as an overlay, so the buyer never leaves brookesai.com.
-
-   While it's left empty, those buttons show a polite "not open yet" note
-   rather than leading anyone to a dead end.
-   ========================================================================== */
-var PAYHIP_PRODUCT_ID = '';
-
-/* Optional: if you ever move away from Payhip, put the full checkout URL here
-   instead and it takes priority over the product ID above. */
-var CHECKOUT_URL = '';
-
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  /* ---- Wire up every buy button ---- */
-  var buyButtons = document.querySelectorAll('[data-buy]');
-
-  if (PAYHIP_PRODUCT_ID && !CHECKOUT_URL) {
-    // Load Payhip's overlay script once, on demand.
-    if (!document.getElementById('payhip-js')) {
-      var s = document.createElement('script');
-      s.id = 'payhip-js';
-      s.src = 'https://payhip.com/payhip.js';
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    buyButtons.forEach(function (el) {
-      el.setAttribute('href', 'https://payhip.com/b/' + PAYHIP_PRODUCT_ID);
-      el.classList.add('payhip-buy-button');
-      el.setAttribute('data-product', PAYHIP_PRODUCT_ID);
-      el.setAttribute('data-theme', 'none');   // keep our own button styling
-    });
-
-  } else if (CHECKOUT_URL) {
-    buyButtons.forEach(function (el) { el.setAttribute('href', CHECKOUT_URL); });
-
-  } else {
-    // Nothing configured yet — fail politely instead of silently.
-    buyButtons.forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        var note = document.getElementById('buyNote');
-        if (note) {
-          note.hidden = false;
-          note.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          window.location.href = 'contact.html';
-        }
-      });
-    });
-  }
-
-  /* ---- Footer year ---- */
-  document.querySelectorAll('#year').forEach(function (el) {
-    el.textContent = new Date().getFullYear();
-  });
-
-  /* ---- Nav shadow on scroll ---- */
-  var nav = document.getElementById('siteNav');
-  if (nav) {
+  /* ------------------------------------------------------------------
+     2. Sticky header shadow
+     ------------------------------------------------------------------ */
+  var header = $('#header');
+  if (header) {
     var onScroll = function () {
-      nav.classList.toggle('scrolled', window.scrollY > 8);
+      header.classList.toggle('is-stuck', window.scrollY > 8);
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---- Mobile nav ---- */
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  if (toggle && links) {
+  /* ------------------------------------------------------------------
+     3. Mobile navigation
+     ------------------------------------------------------------------ */
+  var toggle = $('#nav-toggle');
+  var navLinks = $('#nav-links');
+
+  if (toggle && navLinks) {
+    var setNav = function (open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      navLinks.classList.toggle('is-open', open);
+    };
+
     toggle.addEventListener('click', function () {
-      var isOpen = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.innerHTML = isOpen ? '<i class="ph ph-x"></i>' : '<i class="ph ph-list"></i>';
+      setNav(toggle.getAttribute('aria-expanded') !== 'true');
     });
-    links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerHTML = '<i class="ph ph-list"></i>';
-      });
+
+    // Close when a link is followed
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setNav(false);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setNav(false);
+        toggle.focus();
+      }
+    });
+
+    // Reset state if resized up to desktop
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 864) setNav(false);
     });
   }
 
-  /* ---- FAQ: one open at a time, per list ---- */
-  document.querySelectorAll('.faq-list').forEach(function (list) {
-    var items = list.querySelectorAll('.faq-item');
-    items.forEach(function (item) {
-      item.addEventListener('toggle', function () {
-        if (item.open) {
-          items.forEach(function (other) {
-            if (other !== item) other.open = false;
-          });
+  /* ------------------------------------------------------------------
+     4. FAQ accordion
+     ------------------------------------------------------------------ */
+  $$('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (item) item.classList.toggle('is-open', !open);
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     5. Scroll reveal
+     ------------------------------------------------------------------ */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealables = $$('.reveal');
+
+  if (reduced || !('IntersectionObserver' in window)) {
+    revealables.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
         }
       });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+
+    revealables.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ------------------------------------------------------------------
+     6. Enquiry form
+     ------------------------------------------------------------------ */
+  var form = $('#enquiry-form');
+  if (!form) return;
+
+  var statusEl = $('#form-status');
+  var submitBtn = $('#submit-btn');
+  var btnLabel = submitBtn ? $('.btn-label', submitBtn) : null;
+  var loadedAt = $('#loadedAt');
+
+  // Timestamp so the server can reject sub-3-second bot submissions
+  if (loadedAt) loadedAt.value = String(Date.now());
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  var rules = {
+    name:    function (v) { return v.trim().length >= 2; },
+    company: function (v) { return v.trim().length >= 2; },
+    email:   function (v) { return EMAIL_RE.test(v.trim()); },
+    size:    function (v) { return v !== ''; },
+    area:    function (v) { return v !== ''; },
+    message: function (v) { return v.trim().length >= 15; }
+  };
+
+  var setFieldError = function (input, bad) {
+    var field = input.closest('.field');
+    if (field) field.classList.toggle('has-error', bad);
+    if (bad) {
+      input.setAttribute('aria-invalid', 'true');
+      var errId = 'err-' + input.id;
+      if (document.getElementById(errId)) input.setAttribute('aria-describedby', errId);
+    } else {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
+    }
+  };
+
+  var validateField = function (input) {
+    var rule = rules[input.name];
+    if (!rule) return true;
+    var ok = rule(input.value);
+    setFieldError(input, !ok);
+    return ok;
+  };
+
+  // Re-validate a field once it has been touched and corrected
+  Object.keys(rules).forEach(function (name) {
+    var input = form.elements[name];
+    if (!input) return;
+    var evt = input.tagName === 'SELECT' ? 'change' : 'blur';
+    input.addEventListener(evt, function () { validateField(input); });
+    input.addEventListener('input', function () {
+      if (input.closest('.field') && input.closest('.field').classList.contains('has-error')) {
+        validateField(input);
+      }
     });
   });
 
-  /* ---- Dismissible announcement bar ---- */
-  var announce = document.getElementById('announceBar');
-  var announceClose = document.getElementById('announceClose');
-  if (announce) {
-    try {
-      if (localStorage.getItem('brookesai_banner') === 'closed') {
-        announce.classList.add('hidden');
-      }
-    } catch (e) { /* storage unavailable — show the bar */ }
+  var showStatus = function (message, ok) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = 'form-status is-visible ' + (ok ? 'is-ok' : 'is-bad');
+  };
 
-    if (announceClose) {
-      announceClose.addEventListener('click', function () {
-        announce.classList.add('hidden');
-        try { localStorage.setItem('brookesai_banner', 'closed'); } catch (e) {}
+  var setBusy = function (busy) {
+    if (!submitBtn) return;
+    submitBtn.disabled = busy;
+    if (btnLabel) btnLabel.textContent = busy ? 'Sending…' : 'Request my free audit';
+  };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Validate everything, focus the first problem
+    var firstBad = null;
+    Object.keys(rules).forEach(function (name) {
+      var input = form.elements[name];
+      if (!input) return;
+      if (!validateField(input) && !firstBad) firstBad = input;
+    });
+
+    if (firstBad) {
+      showStatus('Please check the highlighted fields and try again.', false);
+      firstBad.focus();
+      return;
+    }
+
+    // Silent bot rejection
+    if (form.elements.website && form.elements.website.value !== '') return;
+
+    setBusy(true);
+    if (statusEl) statusEl.className = 'form-status';
+
+    var payload = {};
+    new FormData(form).forEach(function (value, key) { payload[key] = value; });
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          return { ok: res.ok, data: data };
+        });
+      })
+      .then(function (result) {
+        if (!result.ok) throw new Error(result.data.error || 'Request failed');
+
+        form.reset();
+        $$('.field.has-error', form).forEach(function (f) { f.classList.remove('has-error'); });
+        showStatus(
+          'Thanks — your enquiry is with us. You\'ll hear back within one working day, ' +
+          'usually sooner. If it\'s urgent, email hello@brookesai.com directly.',
+          true
+        );
+        if (statusEl) statusEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+      })
+      .catch(function () {
+        showStatus(
+          'Something went wrong sending that. Please email hello@brookesai.com ' +
+          'and we\'ll pick it up straight away.',
+          false
+        );
+      })
+      .then(function () {
+        setBusy(false);
       });
-    }
-  }
-
-  /* ---- Free course progress ----
-     Each lesson page sets data-lesson="1".."4" on <body>.
-     We remember which lessons have been opened, and mark them on the hub. */
-  var LESSONS_KEY = 'brookesai_lessons_done';
-
-  function readProgress() {
-    try {
-      var raw = localStorage.getItem(LESSONS_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) { return []; }
-  }
-
-  function writeProgress(list) {
-    try { localStorage.setItem(LESSONS_KEY, JSON.stringify(list)); } catch (e) {}
-  }
-
-  var thisLesson = document.body.getAttribute('data-lesson');
-  if (thisLesson) {
-    var done = readProgress();
-    if (done.indexOf(thisLesson) === -1) {
-      done.push(thisLesson);
-      writeProgress(done);
-    }
-  }
-
-  // Mark completed lessons on the hub page
-  var progress = readProgress();
-  document.querySelectorAll('[data-lesson-marker]').forEach(function (el) {
-    var n = el.getAttribute('data-lesson-marker');
-    if (progress.indexOf(n) !== -1) {
-      el.classList.add('done');
-      var badge = el.querySelector('[data-done-badge]');
-      if (badge) badge.hidden = false;
-    }
   });
-
-  // Progress rail on lesson pages
-  document.querySelectorAll('.progress-rail .seg').forEach(function (seg, i) {
-    var current = parseInt(thisLesson || '0', 10);
-    if (i + 1 <= current) seg.classList.add('done');
-  });
-
-  /* ---- Cheat sheet / notify email capture ----
-     No backend on a static site. We confirm to the reader honestly and
-     hand off to email so nothing is silently swallowed. */
-  document.querySelectorAll('[data-capture]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var input = form.querySelector('input[type="email"]');
-      var status = form.parentElement.querySelector('.form-status');
-      var subject = form.getAttribute('data-capture') || 'Brookes AI';
-
-      if (!input || !input.value.trim() || input.value.indexOf('@') === -1) {
-        if (status) {
-          status.textContent = 'That doesn’t look like an email address — could you check it?';
-          status.className = 'form-status visible';
-        }
-        return;
-      }
-
-      var address = form.getAttribute('data-to') || 'hello@brookesai.com';
-      var body = encodeURIComponent('Please send this to: ' + input.value.trim());
-      window.location.href = 'mailto:' + address +
-        '?subject=' + encodeURIComponent(subject) + '&body=' + body;
-
-      if (status) {
-        status.textContent = 'Opening your email app — just press send and I’ll get it over to you.';
-        status.className = 'form-status visible ok';
-      }
-      form.reset();
-    });
-  });
-
-  /* ---- Contact form ---- */
-  var contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var message = document.getElementById('cf-message').value.trim();
-      var status = document.getElementById('contactStatus');
-
-      if (!name || !email || !message) {
-        if (status) {
-          status.textContent = 'Could you fill in your name, email and message before sending?';
-          status.className = 'form-status visible';
-        }
-        return;
-      }
-
-      var subject = encodeURIComponent('Message from ' + name);
-      var body = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
-      window.location.href = 'mailto:hello@brookesai.com?subject=' + subject + '&body=' + body;
-
-      if (status) {
-        status.textContent = 'Opening your email app — press send and it’ll come straight to me.';
-        status.className = 'form-status visible ok';
-      }
-    });
-  }
-
-  /* ---- Print button (cheat sheet) ---- */
-  document.querySelectorAll('[data-print]').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.print();
-    });
-  });
-
-});
+})();

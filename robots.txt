@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_private/
+
+Sitemap: https://brookesai.com/sitemap.xml

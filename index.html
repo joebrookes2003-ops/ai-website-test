@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brookes AI — Learn AI in half an hour, free</title>
-<meta name="description" content="A free 30-minute AI course for people who think it isn't for them. Four short lessons, no jargon, nothing to sign up for. Written by Benjamin Brookes, Master's-level training in Artificial Intelligence.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brookes AI — AI workflow automation for UK businesses</title>
+<meta name="description" content="We review how your business actually works, find the processes worth automating, and build AI workflows that run them. Free process audit. UK-based.">
+<meta name="theme-color" content="#08090c">
+<link rel="canonical" href="https://brookesai.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brookes AI — AI workflow automation for UK businesses">
+<meta property="og:description" content="We review how your business actually works, find the processes worth automating, and build AI workflows that run them.">
+<meta property="og:url" content="https://brookesai.com/">
+<meta property="og:site_name" content="Brookes AI">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308090c'/%3E%3Cpath d='M9 22V10h6a3.2 3.2 0 0 1 .6 6.3A3.4 3.4 0 0 1 15.4 22H9Zm3-7.2h2.6a1.3 1.3 0 0 0 0-2.6H12v2.6Zm0 4.8h2.9a1.4 1.4 0 0 0 0-2.8H12v2.8Z' fill='%234ade80'/%3E%3Ccircle cx='22.5' cy='12' r='1.6' fill='%234ade80'/%3E%3Ccircle cx='22.5' cy='20' r='1.6' fill='%234ade80'/%3E%3Cpath d='M22.5 13.6v4.8' stroke='%234ade80' stroke-width='1.3'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Brookes AI",
+  "description": "B2B AI workflow automation consultancy. Process review and implementation of AI-powered workflows for UK businesses.",
+  "url": "https://brookesai.com/",
+  "email": "hello@brookesai.com",
+  "areaServed": "GB",
+  "serviceType": "AI workflow automation and process consultancy"
+}
+</script>
 </head>
 <body>
 
-<a href="#main" class="skip-link">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="announce" id="announceBar">
-  <div class="wrap">
-    <span>The free 30-minute course is now live — <a href="free-course.html">start it here</a>. No signup.</span>
-    <button class="announce-close" id="announceClose" aria-label="Close">✕</button>
-  </div>
-</div>
-
-<header class="nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-      <span class="mark"><i class="ph ph-compass"></i></span>
+<header class="site-header" id="header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Brookes AI, home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#11141b" stroke="#2a3140"/>
+        <path d="M9 22V10h6a3.2 3.2 0 0 1 .6 6.3A3.4 3.4 0 0 1 15.4 22H9Zm3-7.2h2.6a1.3 1.3 0 0 0 0-2.6H12v2.6Zm0 4.8h2.9a1.4 1.4 0 0 0 0-2.8H12v2.8Z" fill="#4ade80"/>
+        <circle cx="22.5" cy="12" r="1.6" fill="#4ade80"/>
+        <circle cx="22.5" cy="20" r="1.6" fill="#4ade80"/>
+        <path d="M22.5 13.6v4.8" stroke="#4ade80" stroke-width="1.3"/>
+      </svg>
       Brookes AI
     </a>
-    <nav class="nav-links" id="navLinks" aria-label="Main">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="free-course.html">Free course</a>
-      <a href="full-course.html">Full course</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
+
+    <nav aria-label="Main">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#problem">Where it hurts</a></li>
+        <li><a href="#services">What we automate</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#trust">Security</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
     </nav>
+
     <div class="nav-actions">
-      <a href="free-course.html" class="btn btn-primary">Start free</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-        <i class="ph ph-list"></i>
+      <a class="btn btn--primary" href="#enquire">Book a process audit</a>
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <span></span>
       </button>
     </div>
   </div>
@@ -47,370 +71,662 @@
 
 <main id="main">
 
-  <!-- HERO -->
+  <!-- ================= HERO ================= -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="kicker kicker-warm">Free · Four lessons · About 30 minutes</span>
-        <h1>You're not behind. There just wasn't a lesson.</h1>
-        <p class="lead">AI arrived in about eighteen months, everyone started talking about it as though it were obvious, and a great many people were left standing there wondering when they were supposed to have learned it.</p>
-        <p class="lead">So here's the lesson. Half an hour, free, no signup. By the end you'll have used it, you'll know what it's actually good for, and you'll know how not to get caught out by it.</p>
-        <div class="hero-actions">
-          <a href="free-course.html" class="btn btn-primary btn-lg">Start the free course <i class="ph ph-arrow-right"></i></a>
-          <a href="full-course.html" class="btn btn-secondary">See the full course</a>
+    <div class="wrap">
+      <div class="hero-inner">
+        <p class="pill"><span class="dot"></span> Taking on new clients for Q4 2026</p>
+
+        <h1>Your team is doing work<br>that <span class="hl">software should be doing.</span></h1>
+
+        <p class="hero-lede">
+          Brookes AI reviews how your business actually operates, identifies the processes
+          where AI genuinely pays for itself, and builds the workflows that run them —
+          integrated with the systems you already use.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn--primary btn--lg" href="#enquire">
+            Book a free process audit
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#process">See how we work</a>
         </div>
-        <div class="hero-note">
-          <i class="ph ph-check-circle"></i> No email required · Nothing to install · Read it right now
+
+        <p class="hero-note">
+          No obligation, no sales script. If automation isn't worth it for you, we'll say so.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STRIP ================= -->
+  <section class="strip" aria-label="At a glance">
+    <div class="wrap" style="padding-inline:0">
+      <dl class="strip-grid">
+        <div class="strip-item">
+          <dt>Engagement starts with</dt>
+          <dd>A free process audit</dd>
         </div>
+        <div class="strip-item">
+          <dt>Typical first workflow</dt>
+          <dd>Live in 2–6 weeks</dd>
+        </div>
+        <div class="strip-item">
+          <dt>Built on</dt>
+          <dd>Your existing systems</dd>
+        </div>
+        <div class="strip-item">
+          <dt>Based in</dt>
+          <dd>United Kingdom</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="section" id="problem">
+    <div class="wrap split split--sticky">
+      <div class="reveal">
+        <p class="eyebrow">The problem</p>
+        <h2 class="sec-title">Most businesses don't have an AI problem. They have a process problem.</h2>
+        <p class="sec-lede">
+          Buying an AI tool and hoping it helps is how most automation projects fail.
+          The work that's actually costing you money is usually hidden in the gaps between
+          systems, in inboxes, and in the manual steps nobody has written down.
+        </p>
+        <p class="sec-lede" style="margin-top:1rem">
+          That's why we start by mapping what your people really do — not what the
+          org chart says they do.
+        </p>
       </div>
 
-      <div class="hero-card">
-        <div class="card-top">
-          <span class="tag tag-free"><i class="ph ph-gift"></i> Free</span>
-          <span class="small muted">~30 min</span>
-        </div>
-        <h3>AI in 30 Minutes</h3>
-        <p class="small muted" style="margin-bottom:0;">For people who think it's not for them.</p>
-        <ul>
-          <li><i class="ph ph-check"></i> What this thing actually is</li>
-          <li><i class="ph ph-check"></i> Getting you set up, step by step</li>
-          <li><i class="ph ph-check"></i> Your first real win</li>
-          <li><i class="ph ph-check"></i> Three rules for staying safe</li>
+      <div class="reveal">
+        <ul class="signal-list">
+          <li>
+            <span class="idx">01</span>
+            <span><strong>Copy-paste between systems.</strong> Someone re-keys the same data into a CRM, a spreadsheet and an accounting package because nothing talks to anything else.</span>
+          </li>
+          <li>
+            <span class="idx">02</span>
+            <span><strong>Inboxes as a queue.</strong> Enquiries, invoices and approvals arrive by email and get triaged by hand, all day, by someone expensive.</span>
+          </li>
+          <li>
+            <span class="idx">03</span>
+            <span><strong>Documents read by humans.</strong> Contracts, purchase orders, timesheets and forms get opened, skimmed and typed up one at a time.</span>
+          </li>
+          <li>
+            <span class="idx">04</span>
+            <span><strong>Knowledge in one person's head.</strong> Work stops when a particular colleague is on holiday, because only they know the process.</span>
+          </li>
+          <li>
+            <span class="idx">05</span>
+            <span><strong>Reporting that eats a day a month.</strong> Numbers pulled from four places, pasted into a template, reconciled by hand.</span>
+          </li>
+          <li>
+            <span class="idx">06</span>
+            <span><strong>An AI pilot that went nowhere.</strong> A tool was bought, nobody adopted it, and the underlying process never changed.</span>
+          </li>
         </ul>
-        <a href="free-course.html" class="btn btn-primary btn-block">Start Lesson 1</a>
-        <p class="small muted center" style="margin: var(--space-3) 0 0;">Free, and it stays free.</p>
       </div>
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <div class="wrap">
-    <div class="trust-strip">
-      <div class="item">
-        <i class="ph ph-graduation-cap"></i>
-        <div><div class="t">Master&rsquo;s-level AI training</div><div class="d">Not recycled from somewhere else</div></div>
-      </div>
-      <div class="item">
-        <i class="ph ph-chat-teardrop-text"></i>
-        <div><div class="t">Plain English throughout</div><div class="d">No jargon, no assumed knowledge</div></div>
-      </div>
-      <div class="item">
-        <i class="ph ph-hand-pointing"></i>
-        <div><div class="t">You do it as you read</div><div class="d">Every lesson ends with a real task</div></div>
-      </div>
-      <div class="item">
-        <i class="ph ph-shield-check"></i>
-        <div><div class="t">Honest about the risks</div><div class="d">Including what it gets wrong</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROOF — credentials and what's actually on offer -->
-  <section class="proof-band">
+  <!-- ================= SERVICES ================= -->
+  <section class="section section--panel" id="services">
     <div class="wrap">
-      <div class="proof-grid">
-        <div class="proof-item">
-          <i class="ph ph-certificate"></i>
-          <div class="n">Master's</div>
-          <div class="l">Level training in AI<br>Not recycled blog advice</div>
-        </div>
-        <div class="proof-item">
-          <i class="ph ph-book-open-text"></i>
-          <div class="n">38</div>
-          <div class="l">Lessons in total<br>4 free, 34 in the full course</div>
-        </div>
-        <div class="proof-item">
-          <i class="ph ph-lock-open"></i>
-          <div class="n">£0</div>
-          <div class="l">To start<br>No card, no email, no signup</div>
-        </div>
-        <div class="proof-item">
-          <i class="ph ph-arrow-counter-clockwise"></i>
-          <div class="n">30 days</div>
-          <div class="l">Refund on the paid course<br>No questions asked</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section class="section section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">Who this is for</span>
-        <h2>Have you ever nodded along and hoped they'd change the subject?</h2>
-        <p>That's who this is for. Not developers, not people who already know. People who've been meaning to look into it, who feel slightly foolish asking, and who'd quite like someone to just explain it properly for once.</p>
+      <div class="sec-head reveal">
+        <p class="eyebrow">What we automate</p>
+        <h2 class="sec-title">Three areas where AI workflows reliably pay for themselves</h2>
+        <p class="sec-lede">
+          We don't sell a product. We build the workflow your process needs, using the
+          right mix of AI models, integrations and plain automation — whatever actually
+          solves it.
+        </p>
       </div>
 
-      <div class="values-grid">
-        <div class="value-card">
-          <i class="ph ph-user"></i>
-          <div class="t">You've never tried it</div>
-          <p class="d">You'll be set up and using it within ten minutes, on your phone and your laptop.</p>
-        </div>
-        <div class="value-card">
-          <i class="ph ph-arrows-clockwise"></i>
-          <div class="t">You tried it and gave up</div>
-          <p class="d">There's one habit that separates people who find it useful from people who try twice and stop. It's Lesson 1.</p>
-        </div>
-        <div class="value-card">
-          <i class="ph ph-briefcase"></i>
-          <div class="t">You need it for work</div>
-          <p class="d">The full course has a module on CVs, applications, interviews and running something small.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE ONE IDEA -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker kicker-accent">The idea the whole thing rests on</span>
-        <h2>It is not a search engine</h2>
-        <p>You've spent twenty-five years learning to type as few words as possible. <em>Train times Manchester. Chicken recipe.</em> Keywords, fragments — because that's what worked.</p>
-        <p>This is the opposite. It's a conversation, and it gets better the more you tell it, not less.</p>
-      </div>
-
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); max-width: 900px;">
-        <div>
-          <span class="kicker">The old habit</span>
-          <div class="prompt" style="border-left-color: var(--line-strong);">
-            <span class="prompt-label">You type</span>
-            <p>chicken recipe</p>
+      <div class="grid grid--3">
+        <article class="card card--hover reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6M9 13h6M9 17h4"/>
+            </svg>
           </div>
-          <p class="small muted">You get a chicken recipe. Nothing you couldn't have found yourself.</p>
-        </div>
-        <div>
-          <span class="kicker kicker-accent">The shift</span>
-          <div class="prompt">
-            <span class="prompt-label">You type</span>
-            <p>I've got two chicken breasts, half a bag of spinach and some rice that needs using up. There's two of us, I'm not a confident cook, and I've got about half an hour. What can I make?</p>
-          </div>
-          <p class="small muted">Now you get something that's actually for you. And you can follow it with <em>"I don't much like spinach"</em> — because it remembers.</p>
-        </div>
-      </div>
-      <p style="margin-top: var(--space-5);"><a href="lesson-1.html" class="btn btn-ghost">That's Lesson 1 — read it free <i class="ph ph-arrow-right"></i></a></p>
-    </div>
-  </section>
-
-  <!-- COURSES -->
-  <section class="section section-alt" id="courses">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">The courses</span>
-        <h2>Start free. Go further only if you want to.</h2>
-        <p>The free course is genuinely complete — you can stop there and just start using the thing. That's a perfectly good outcome.</p>
-        <p class="small"><a href="#coming-soon" style="color:var(--accent); text-decoration:underline; text-underline-offset:3px;">Two more courses are on the way</a> — have a look at what's coming.</p>
-      </div>
-
-      <div class="card-grid cols-2">
-
-        <article class="card card-free">
-          <div class="card-kicker">
-            <span class="tag tag-free"><i class="ph ph-gift"></i> Free</span>
-            <span class="tag tag-outline">Complete beginner</span>
-          </div>
-          <h3 class="card-title">AI in 30 Minutes</h3>
-          <p class="card-body">Four short lessons. What it actually is, getting you set up, writing the message you've been putting off, and the three rules that keep you out of trouble. Read it here, right now, with no signup.</p>
-          <div class="card-meta">
-            <span><i class="ph ph-book-open"></i> 4 lessons</span>
-            <span><i class="ph ph-clock"></i> ~30 minutes</span>
-          </div>
-          <div class="card-price"><span class="amount">Free</span><span class="cadence">and it stays free</span></div>
-          <a href="free-course.html" class="btn btn-primary btn-block">Start reading</a>
-        </article>
-
-        <article class="card card-featured">
-          <div class="card-kicker">
-            <span class="tag tag-accent"><i class="ph ph-star"></i> Full course</span>
-            <span class="tag tag-outline">Beginner</span>
-          </div>
-          <h3 class="card-title">The Complete Beginner's Course</h3>
-          <p class="card-body">Seven modules, 34 lessons. Reading the letters and documents that never quite make sense, writing the difficult messages properly, everyday use, and work if that's where you are.</p>
-          <div class="card-meta">
-            <span><i class="ph ph-book-open"></i> 34 lessons</span>
-            <span><i class="ph ph-infinity"></i> Yours to keep</span>
-          </div>
-          <div class="card-price"><span class="amount">£13.99</span><span class="cadence">one payment</span></div>
-          <a href="full-course.html" class="btn btn-primary btn-block">See what's in it</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= COMING SOON ================= -->
-  <section class="section section-soon" id="coming-soon">
-    <div class="wrap">
-
-      <div class="soon-head">
-        <div>
-          <span class="kicker kicker-warm"><i class="ph ph-hammer"></i> In progress</span>
-          <h2>Courses I'm still writing</h2>
-          <p>Two more are on the way. Neither is finished, so neither is for sale — I'd rather take the time and get them right than announce a date and miss it. If you'd like telling when one is ready, leave your email at the bottom and I'll drop you a line. Nothing else, ever.</p>
-        </div>
-      </div>
-
-      <div class="card-grid cols-2 soon-grid">
-
-        <article class="card is-soon">
-          <div class="card-kicker">
-            <span class="tag tag-soon"><i class="ph ph-clock"></i> Coming soon</span>
-            <span class="tag tag-outline">Managers &amp; professionals</span>
-          </div>
-          <h3 class="card-title">AI for Work</h3>
-          <p class="card-body">For people who need this at their desk, not just at home. Writing, summarising, research, meeting preparation, reports and decision support — and, just as importantly, the judgement to know when not to use it.</p>
-          <ul class="soon-topics">
-            <li><i class="ph ph-circle-fill"></i> Writing and summarising at work</li>
-            <li><i class="ph ph-circle-fill"></i> Research and meeting preparation</li>
-            <li><i class="ph ph-circle-fill"></i> Reports and decision support</li>
-            <li><i class="ph ph-circle-fill"></i> Where it's a liability, not a help</li>
+          <h3>Document &amp; data processing</h3>
+          <p>
+            Anything that arrives as a PDF, a scan, a form or an email attachment and
+            currently gets read and typed up by a person.
+          </p>
+          <ul class="ex-list">
+            <li>Invoice and purchase-order extraction into your finance system</li>
+            <li>Contract and policy review with the key terms pulled out</li>
+            <li>Application and onboarding forms validated and filed automatically</li>
+            <li>Monthly reports assembled from multiple sources</li>
           </ul>
-          <div class="card-meta">
-            <span><i class="ph ph-pencil-simple"></i> Being written now</span>
-          </div>
-          <div class="card-price"><span class="amount">~£30</span><span class="cadence">expected price</span></div>
-          <a href="#notify" class="btn btn-secondary btn-block">Tell me when it's ready</a>
         </article>
 
-        <article class="card is-soon">
-          <div class="card-kicker">
-            <span class="tag tag-soon"><i class="ph ph-clock"></i> Coming soon</span>
-            <span class="tag tag-outline">Creators &amp; small businesses</span>
+        <article class="card card--hover reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <path d="M8 9h8M8 13h5"/>
+            </svg>
           </div>
-          <h3 class="card-title">Build and Launch a Website with AI</h3>
-          <p class="card-body">For anyone who's wanted a proper website and been put off by the idea of learning to code. Plan it, build it, put it online — using AI tools, from a standing start.</p>
-          <ul class="soon-topics">
-            <li><i class="ph ph-circle-fill"></i> Planning what the site needs to do</li>
-            <li><i class="ph ph-circle-fill"></i> Writing the words and building the pages</li>
-            <li><i class="ph ph-circle-fill"></i> Getting it online and keeping it there</li>
-            <li><i class="ph ph-circle-fill"></i> What this approach can't do for you</li>
+          <h3>Customer communication</h3>
+          <p>
+            The front door of your business — enquiries, questions and follow-ups —
+            handled faster without losing the human touch where it matters.
+          </p>
+          <ul class="ex-list">
+            <li>Inbox triage: routed, prioritised and summarised before anyone reads it</li>
+            <li>Draft responses prepared from your own knowledge base, sent by a human</li>
+            <li>Lead qualification and CRM records updated automatically</li>
+            <li>Support deflection for the questions you answer fifty times a week</li>
           </ul>
-          <div class="card-meta">
-            <span><i class="ph ph-pencil-simple"></i> Being written now</span>
-          </div>
-          <div class="card-price"><span class="amount">~£30</span><span class="cadence">expected price</span></div>
-          <a href="#notify" class="btn btn-secondary btn-block">Tell me when it's ready</a>
         </article>
 
+        <article class="card card--hover reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/>
+              <circle cx="12" cy="12" r="3.2"/>
+            </svg>
+          </div>
+          <h3>Internal operations</h3>
+          <p>
+            The connective tissue between departments and systems — the handoffs,
+            approvals and status chasing that quietly consume the working week.
+          </p>
+          <ul class="ex-list">
+            <li>Approval chains that route themselves and chase their own deadlines</li>
+            <li>Employee and client onboarding run end to end</li>
+            <li>Data kept in sync across CRM, finance and operational tools</li>
+            <li>Internal assistants that answer staff questions from your own documents</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2 class="sec-title">Review first. Build second. Nothing speculative.</h2>
+        <p class="sec-lede">
+          Every engagement follows the same four stages. You can stop after any of them,
+          and you'll own everything produced up to that point.
+        </p>
       </div>
 
-      <!-- NOTIFY -->
-      <div class="soon-notify" id="notify">
-        <div>
-          <h3>Want telling when one lands?</h3>
-          <p class="small">One short email when a course is ready, and nothing in between. I don't sell addresses or pass them on.</p>
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Process audit <span class="step-meta">Free · 1 week</span></h3>
+            <p>
+              A structured conversation with the people who do the work, plus a look at the
+              systems involved. We map your current processes end to end and identify where
+              time and money are actually going.
+            </p>
+            <p class="step-out">
+              <b>You get</b>
+              <span>A written map of your processes and a shortlist of automation candidates, ranked by return — yours to keep whether or not we work together.</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="step reveal">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Scoped proposal <span class="step-meta">Fixed price</span></h3>
+            <p>
+              We pick one process — usually the highest-value, lowest-risk one — and write
+              it up properly: what gets automated, what stays human, which systems are
+              touched, what it costs to build and to run, and how we'll know it worked.
+            </p>
+            <p class="step-out">
+              <b>You get</b>
+              <span>A fixed-price scope with defined success measures. No open-ended day rates.</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="step reveal">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Build &amp; integrate <span class="step-meta">2–6 weeks typical</span></h3>
+            <p>
+              We build the workflow against your real systems and your real data, with a
+              human checkpoint anywhere the cost of a mistake is high. You see working
+              output early and often rather than at the end.
+            </p>
+            <p class="step-out">
+              <b>You get</b>
+              <span>A working workflow, tested on your own cases, with your team trained on it.</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="step reveal">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Handover or ongoing support <span class="step-meta">Your choice</span></h3>
+            <p>
+              Documentation, access and ownership transfer to you. If you'd rather we kept
+              monitoring and improving it, there's a support arrangement for that — but it's
+              optional, and you're never locked in.
+            </p>
+            <p class="step-out">
+              <b>You get</b>
+              <span>Full documentation and ownership. No proprietary lock-in, no hostage systems.</span>
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="section section--panel" id="trust">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">Security &amp; data</p>
+        <h2 class="sec-title">Your data stays yours</h2>
+        <p class="sec-lede" style="margin-bottom:2rem">
+          Most objections to AI in business are really objections about data handling.
+          Reasonably so. Here's how we work.
+        </p>
+
+        <ul class="trust-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <div>
+              <h3>Never used to train models</h3>
+              <p>We use enterprise API tiers where inputs and outputs are excluded from model training by contract. Your documents don't become someone else's training data.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <div>
+              <h3>Minimum necessary access</h3>
+              <p>We ask for the narrowest permissions that make the workflow function, scoped to the systems involved, and we hand credentials back at the end of the engagement.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/>
+            </svg>
+            <div>
+              <h3>UK GDPR from the start</h3>
+              <p>A data processing agreement is in place before we touch anything. We'll tell you plainly which sub-processors are involved and where data is handled.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/>
+            </svg>
+            <div>
+              <h3>Humans stay in the loop where it counts</h3>
+              <p>Anything with legal, financial or reputational consequence keeps a human approval step. Automation should remove the typing, not the judgement.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <i></i><i></i><i></i>
+            <span>engagement profile</span>
+          </div>
+          <div class="terminal-body">
+            <div class="row"><span class="k">audit</span><span class="v">free · no obligation</span></div>
+            <div class="row"><span class="k">pricing</span><span class="v">fixed scope, agreed up front</span></div>
+            <div class="row"><span class="k">contract</span><span class="v">per project, not per year</span></div>
+            <div class="row"><span class="k">ownership</span><span class="v">client, in full</span></div>
+            <hr>
+            <div class="row"><span class="k">data_training</span><span class="v">disabled</span></div>
+            <div class="row"><span class="k">dpa</span><span class="v">signed before access</span></div>
+            <div class="row"><span class="k">access</span><span class="v">least privilege, revoked on handover</span></div>
+            <div class="row"><span class="k">lock_in</span><span class="v">none</span></div>
+            <hr>
+            <p class="muted">
+              // If the audit shows automation isn't worth it for your
+              // business, we'll tell you that and there's nothing to pay.
+            </p>
+          </div>
         </div>
-        <div style="min-width:min(100%,380px);">
-          <form class="capture-form" data-capture="Tell me when the next Brookes AI course is ready" data-to="hello@brookesai.com" style="margin-top:0;">
-            <input class="input" type="email" placeholder="your@email.com" aria-label="Your email address" required>
-            <button type="submit" class="btn btn-primary">Let me know</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Questions</p>
+        <h2 class="sec-title">The things people ask before getting in touch</h2>
+      </div>
+
+      <div class="faq reveal">
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa1">
+              Is the process audit really free?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa1" role="region">
+            <div>
+              <p>Yes. We spend time understanding your processes and give you a written map and a ranked shortlist of automation opportunities. You keep that document regardless of what happens next.</p>
+              <p>It's free because it's also how we decide whether we can genuinely help you. If we can't, we'd rather find that out in week one than three months into a project.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa2">
+              What does an implementation actually cost?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa2" role="region">
+            <div>
+              <p>It depends entirely on the process, which is why we don't publish a price list — a single-workflow build and a multi-department programme are not comparable things.</p>
+              <p>What we will commit to: after the audit you get a fixed price for a defined scope, agreed before any work starts. No open-ended day rates, no surprise invoices.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa3">
+              We're a small business. Are we too small for this?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa3" role="region">
+            <div>
+              <p>Usually not. Smaller teams often see the fastest return, because one person is doing three jobs and the manual work is concentrated and obvious.</p>
+              <p>The audit will tell you honestly whether the numbers work at your size. Sometimes the answer is "hire someone" or "fix your spreadsheet first" — and we'll say that.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa4">
+              Will this replace our staff?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa4" role="region">
+            <div>
+              <p>That's your decision, not ours, and we won't pretend otherwise. What we build removes specific repetitive tasks — data entry, triage, chasing, re-keying.</p>
+              <p>In practice most clients redeploy that time rather than cut headcount, because the bottleneck was never the number of people. But you should go in with a clear view of what you want the outcome to be.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa5">
+              Do we need to replace our existing systems?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa5" role="region">
+            <div>
+              <p>No. We build around what you already run — CRM, accounting package, shared drives, email, whatever it is. Ripping out working systems is expensive and rarely necessary.</p>
+              <p>If something genuinely can't be integrated, we'll tell you at the audit stage rather than after you've paid for a build.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa6">
+              What happens if the AI gets something wrong?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa6" role="region">
+            <div>
+              <p>It will, occasionally — any honest supplier will tell you that. The design question is what happens when it does.</p>
+              <p>We build human checkpoints anywhere the cost of an error is meaningful, add confidence thresholds that escalate uncertain cases to a person, and log every decision so anything can be traced and reversed.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa7">
+              Who are we actually dealing with?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa7" role="region">
+            <div>
+              <p>Brookes AI is a UK limited company founded by Benjamin Brookes, who holds Master's-level training in artificial intelligence. You'll deal with him directly, not an account manager.</p>
+              <p>We're a young company and we're not going to pretend otherwise with invented logos or testimonials. What we'll do instead is show you our method in the audit, before you've committed to anything.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="fa8">
+              How quickly could we see something working?
+            </button>
+          </h3>
+          <div class="faq-a" id="fa8" role="region">
+            <div>
+              <p>The audit takes about a week from our first conversation. A first workflow is typically live within two to six weeks after scoping, depending on how many systems it touches and how quickly access can be arranged.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENQUIRE ================= -->
+  <section class="section contact" id="enquire">
+    <div class="wrap split">
+      <div class="contact-aside reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Book your free process audit</h2>
+        <p class="sec-lede">
+          Tell us roughly what's slowing you down. We'll come back within one working day
+          with either some questions or a time to talk.
+        </p>
+
+        <ul class="aside-points">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <span>No cost and no obligation for the audit</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <span>You keep the process map either way</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <span>You'll speak to the person doing the work, not a salesperson</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <span>We'll tell you if automation isn't the right answer</span>
+          </li>
+        </ul>
+
+        <p class="direct">
+          Prefer email? <a href="mailto:hello@brookesai.com">hello@brookesai.com</a>
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="form-card">
+          <form id="enquiry-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" autocomplete="name"
+                       placeholder="Jane Smith" required>
+                <p class="err" id="err-name">Please tell us your name.</p>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization"
+                       placeholder="Smith &amp; Co Ltd" required>
+                <p class="err" id="err-company">Please tell us your company name.</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Work email</label>
+                <input type="email" id="email" name="email" autocomplete="email"
+                       placeholder="jane@smithandco.co.uk" required>
+                <p class="err" id="err-email">Please enter a valid email address.</p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone <span class="opt">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel"
+                       placeholder="07700 900000">
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="size">Company size</label>
+                <select id="size" name="size" required>
+                  <option value="">Please choose…</option>
+                  <option>Just me / under 10</option>
+                  <option>10–50 people</option>
+                  <option>50–200 people</option>
+                  <option>200–1,000 people</option>
+                  <option>1,000+ people</option>
+                </select>
+                <p class="err" id="err-size">Please choose a company size.</p>
+              </div>
+              <div class="field">
+                <label for="area">Area of interest</label>
+                <select id="area" name="area" required>
+                  <option value="">Please choose…</option>
+                  <option>Document &amp; data processing</option>
+                  <option>Customer communication</option>
+                  <option>Internal operations</option>
+                  <option>Not sure yet — need a review</option>
+                </select>
+                <p class="err" id="err-area">Please choose an area.</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">What's the process that's costing you time?</label>
+              <textarea id="message" name="message" required minlength="15"
+                        placeholder="A few sentences is plenty. What happens today, who does it, and roughly how often?"></textarea>
+              <p class="err" id="err-message">Please give us a little detail — at least a sentence or two.</p>
+            </div>
+
+            <!-- Honeypot: humans never see this -->
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="loadedAt" id="loadedAt" value="">
+
+            <div class="form-foot">
+              <button class="btn btn--primary btn--lg btn--block" type="submit" id="submit-btn">
+                <span class="btn-label">Request my free audit</span>
+              </button>
+              <p class="form-legal">
+                We'll only use your details to reply to this enquiry. No mailing list, no
+                sharing with anyone else. See our <a href="privacy.html">privacy notice</a>.
+              </p>
+            </div>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
-          <p class="form-status" role="status"></p>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT PREVIEW -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head" style="max-width: 68ch;">
-        <span class="kicker">Who's writing this</span>
-        <h2>I'm Benjamin, and I've studied AI to Master's level.</h2>
-        <p>Which mostly means I spent a long time learning how this technology actually works — and then watched a lot of people be told about it very badly. There's an enormous amount of AI advice online, and most of it is vague, repetitive, or written by someone who read three articles that morning.</p>
-        <p>So I wrote the thing I'd want my own family to read. Short lessons, one idea at a time, honest about what it gets wrong. The free course is free because I'd rather you found out whether I'm any good at explaining before you pay me anything.</p>
-        <a href="about.html" class="btn btn-secondary">More about me <i class="ph ph-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ PREVIEW -->
-  <section class="section section-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">Before you start</span>
-        <h2>The questions people actually ask</h2>
-      </div>
-
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Do I need to be good with computers? <i class="ph ph-plus"></i></summary>
-          <p>No. If you can install an app and type a message, you can do this. Lesson 2 walks you through the setup one tap at a time, including the bit where it emails you to check it's really you — which is where most people wander off and don't come back.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is the free course actually free, or is it a trailer for the paid one? <i class="ph ph-plus"></i></summary>
-          <p>It's actually free, and it's actually complete. By the end you'll be set up, you'll have used it properly, and you'll know the safety rules. You can stop there and be perfectly well served. The full course goes further; it isn't the same thing withheld.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I have to give you my email? <i class="ph ph-plus"></i></summary>
-          <p>Not to read the free course — it's just there on the site. If you want the printable cheat sheet sent over, you can send it to me, but that's your choice and nothing is gated behind it.</p>
-        </details>
-      </div>
-      <p style="margin-top: var(--space-5);"><a href="faq.html" class="btn btn-ghost">All the questions <i class="ph ph-arrow-right"></i></a></p>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="section">
-    <div class="wrap">
-      <div class="cta-band accent">
-        <div>
-          <h2>Half an hour. Start now.</h2>
-          <p>No signup, no email, nothing to install first. Just open Lesson 1 and read — with your phone next to you, because doing it afterwards doesn't happen. You know it doesn't.</p>
-        </div>
-        <a href="free-course.html" class="btn btn-primary btn-lg">Start the free course <i class="ph ph-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-brand">
-          <span class="mark"><i class="ph ph-compass"></i></span>
+    <div class="footer-top">
+      <div class="footer-about">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" fill="#11141b" stroke="#2a3140"/>
+            <path d="M9 22V10h6a3.2 3.2 0 0 1 .6 6.3A3.4 3.4 0 0 1 15.4 22H9Zm3-7.2h2.6a1.3 1.3 0 0 0 0-2.6H12v2.6Zm0 4.8h2.9a1.4 1.4 0 0 0 0-2.8H12v2.8Z" fill="#4ade80"/>
+            <circle cx="22.5" cy="12" r="1.6" fill="#4ade80"/>
+            <circle cx="22.5" cy="20" r="1.6" fill="#4ade80"/>
+            <path d="M22.5 13.6v4.8" stroke="#4ade80" stroke-width="1.3"/>
+          </svg>
           Brookes AI
         </a>
-        <p>Practical AI, explained properly. Written by Benjamin Brookes, Master's-level training in Artificial Intelligence.</p>
+        <p>
+          AI workflow automation for UK businesses. We review your processes, find what's
+          worth automating, and build it.
+        </p>
       </div>
+
       <div class="footer-col">
-        <h4>Courses</h4>
-        <a href="free-course.html">AI in 30 Minutes — free</a>
-        <a href="full-course.html">The Complete Course — £13.99</a>
-        <a href="#coming-soon">AI for Work — soon</a>
-        <a href="#coming-soon">Websites with AI — soon</a>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="#problem">Where it hurts</a></li>
+          <li><a href="#services">What we automate</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#trust">Security &amp; data</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
       </div>
+
       <div class="footer-col">
-        <h4>The free lessons</h4>
-        <a href="lesson-1.html">1 · What it actually is</a>
-        <a href="lesson-2.html">2 · Getting set up</a>
-        <a href="lesson-3.html">3 · Your first real win</a>
-        <a href="lesson-4.html">4 · Staying safe</a>
-      </div>
-      <div class="footer-col">
-        <h4>More</h4>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="cheat-sheet.html">Cheat sheet</a>
+        <h3>Contact &amp; legal</h3>
+        <ul>
+          <li><a href="#enquire">Book a process audit</a></li>
+          <li><a href="mailto:hello@brookesai.com">hello@brookesai.com</a></li>
+          <li><a href="privacy.html">Privacy notice</a></li>
+          <li><a href="terms.html">Terms of business</a></li>
+        </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© <span id="year"></span> Brookes AI</span>
-      <span class="footer-legal">
-        <a href="privacy.html">Privacy</a> ·
-        <a href="terms.html">Terms</a> ·
-        <a href="refunds.html">Refunds</a>
-      </span>
+      <p>&copy; <span id="year">2026</span> Brookes AI. All rights reserved.</p>
+      <div class="legal-bits">
+        <!-- TODO: replace with your registered details before going live -->
+        <span>[Registered company name] Ltd</span>
+        <span>Company no. [00000000]</span>
+        <span>Registered in England &amp; Wales</span>
+      </div>
     </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
