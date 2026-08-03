@@ -139,7 +139,7 @@ async function handleEnquiry(request, env) {
   const html = `<!doctype html>
 <html><body style="margin:0;background:#f5f6f8;padding:24px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#111">
   <div style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #e3e6ea;border-radius:10px;overflow:hidden">
-    <div style="background:#08090c;color:#4ade80;padding:16px 22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase">
+    <div style="background:#161826;color:#b6aafe;padding:16px 22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase">
       New enquiry &middot; brookesai.com
     </div>
     <div style="padding:22px">
@@ -156,7 +156,7 @@ async function handleEnquiry(request, env) {
 
       <p style="margin-top:22px">
         <a href="mailto:${esc(data.email)}?subject=${encodeURIComponent('Re: your enquiry to Brookes AI')}"
-           style="display:inline-block;background:#08090c;color:#4ade80;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600">
+           style="display:inline-block;background:#161826;color:#b6aafe;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600">
           Reply to ${esc(data.name)}
         </a>
       </p>

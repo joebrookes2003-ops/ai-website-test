@@ -6,7 +6,7 @@ Vanilla HTML / CSS / JS. No build step. Deployed with Cloudflare Pages.
 
 | Path | Purpose |
 |---|---|
-| `index.html` | The whole marketing site — hero, problem, services, process, security, FAQ, enquiry form |
+| `index.html` | The whole marketing site — hero, problem, services, two-step process, security, FAQ, enquiry form |
 | `privacy.html` | Privacy notice (UK GDPR) |
 | `terms.html` | Website terms + general terms of business |
 | `styles.css` | Complete design system. All colours are CSS custom properties at the top |
@@ -52,6 +52,25 @@ and the three-second timing check handle ordinary bots.
 - The FAQ names Benjamin Brookes and describes the company as young; adjust as that changes
 - `https://brookesai.com/` appears in canonical tags, the sitemap and structured data — change if the domain differs
 
+**4. Be able to deliver the week.** The site promises a free workflow review costing the
+client about an hour, and a first workflow live within a week of go-ahead. That claim is
+load-bearing — it is in the hero, the strip, the process section, the FAQ and the enquiry
+panel. Clause B4 of `terms.html` qualifies it (the week runs from signature *and* receipt
+of system access and a named approver, and covers the first scoped workflow only), but the
+qualification only protects you if the review genuinely filters out jobs that can't hit it.
+If you find you can't hold the week, change the claim rather than relying on the clause.
+
+## Design notes on the palette
+
+Colours are adapted from the Nocturne design system: a desaturated blue-grey ground
+(`#161826`) with a single blurple accent (`#9184d9`) used as line, mark and glow rather
+than as a flood. Ramps were generated in OKLCH so each step carries the same visual weight.
+
+`--accent` is for interface chrome, large text and fills. `--accent-text` is the lighter
+step, used anywhere the accent carries small text (eyebrows, step numbers, links, terminal
+keys) — the base accent is only 4.87:1 on panel backgrounds, which is marginal for body
+copy. Every text/background pairing in the sheet meets WCAG AA at 4.5:1.
+
 ## Local preview
 
 Static preview (the form will fail, since no function is running):
@@ -66,11 +85,9 @@ Full preview including the enquiry endpoint:
 npx wrangler pages dev .
 ```
 
-## Design notes
-
-Every colour is a custom property in the `:root` block of `styles.css`. To change
-the accent from green to something else, edit `--accent`, `--accent-hover`,
-`--accent-dim`, `--accent-glow` and `--accent-ink` — nothing else needs touching.
+Every colour is a custom property in the `:root` block of `styles.css`. To change the
+accent, edit `--accent`, `--accent-hover`, `--accent-text`, `--accent-dim`, `--accent-glow`
+and `--accent-ink` — nothing else needs touching.
 
 The site uses system fonts, so there are no webfont requests and nothing loads from
 a third-party origin. The Content-Security-Policy in `_headers` enforces that; if
