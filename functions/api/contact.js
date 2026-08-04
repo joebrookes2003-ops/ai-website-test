@@ -6,7 +6,7 @@
  * Workers & Pages → your project → Settings → Variables and Secrets):
  *
  *   RESEND_API_KEY   Secret.  API key from resend.com
- *   TO_EMAIL         Plain.   Where enquiries land, e.g. hello@brookesai.com
+ *   TO_EMAIL         Plain.   Where enquiries land, e.g. enquiries@brookesai.com
  *   FROM_EMAIL       Plain.   A verified sender on your domain,
  *                             e.g. "Brookes AI <enquiries@brookesai.com>"
  *

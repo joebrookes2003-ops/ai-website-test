@@ -76,7 +76,9 @@
   /* ------------------------------------------------------------------
      5. Scroll reveal
      ------------------------------------------------------------------ */
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Guarded: if matchMedia is unavailable the form below must still wire up.
+  var reduced = typeof window.matchMedia === 'function' &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var revealables = $$('.reveal');
 
   if (reduced || !('IntersectionObserver' in window)) {
@@ -159,10 +161,13 @@
     statusEl.className = 'form-status is-visible ' + (ok ? 'is-ok' : 'is-bad');
   };
 
+  // Remember the label from the markup so it survives a "Sending…" cycle
+  var idleLabel = btnLabel ? btnLabel.textContent : '';
+
   var setBusy = function (busy) {
     if (!submitBtn) return;
     submitBtn.disabled = busy;
-    if (btnLabel) btnLabel.textContent = busy ? 'Sending…' : 'Request my free audit';
+    if (btnLabel) btnLabel.textContent = busy ? 'Sending…' : idleLabel;
   };
 
   form.addEventListener('submit', function (e) {
@@ -201,25 +206,44 @@
           return { ok: res.ok, data: data };
         });
       })
-      .then(function (result) {
-        if (!result.ok) throw new Error(result.data.error || 'Request failed');
+      .then(
+        // Success path. Anything that throws in here must NOT be reported as a
+        // send failure — the enquiry has already reached us, and telling the
+        // visitor otherwise makes them submit a duplicate.
+        function (result) {
+          if (!result.ok) {
+            showStatus(
+              'Something went wrong sending that. Please email enquiries@brookesai.com ' +
+              'and we\'ll pick it up straight away.',
+              false
+            );
+            return;
+          }
 
-        form.reset();
-        $$('.field.has-error', form).forEach(function (f) { f.classList.remove('has-error'); });
-        showStatus(
-          'Thanks — your enquiry is with us. You\'ll hear back within one working day, ' +
-          'usually sooner. If it\'s urgent, email hello@brookesai.com directly.',
-          true
-        );
-        if (statusEl) statusEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-      })
-      .catch(function () {
-        showStatus(
-          'Something went wrong sending that. Please email hello@brookesai.com ' +
-          'and we\'ll pick it up straight away.',
-          false
-        );
-      })
+          showStatus(
+            'Thanks — your enquiry is with us. You\'ll hear back within one working day, ' +
+            'usually sooner. If it\'s urgent, email enquiries@brookesai.com directly.',
+            true
+          );
+
+          // Cosmetic only — never let these break the confirmation above.
+          try {
+            form.reset();
+            $$('.field.has-error', form).forEach(function (f) { f.classList.remove('has-error'); });
+            if (statusEl && typeof statusEl.scrollIntoView === 'function') {
+              statusEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+            }
+          } catch (e) { /* confirmation already shown */ }
+        },
+        // Rejection path: the request genuinely failed to complete.
+        function () {
+          showStatus(
+            'Something went wrong sending that. Please email enquiries@brookesai.com ' +
+            'and we\'ll pick it up straight away.',
+            false
+          );
+        }
+      )
       .then(function () {
         setBusy(false);
       });

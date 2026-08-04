@@ -34,7 +34,7 @@ Variables and secrets):
 | Variable | Type | Value |
 |---|---|---|
 | `RESEND_API_KEY` | Secret | API key from [resend.com](https://resend.com) — free tier covers 3,000 emails/month |
-| `TO_EMAIL` | Plain text | Where enquiries land, e.g. `hello@brookesai.com` |
+| `TO_EMAIL` | Plain text | Where enquiries land, e.g. `enquiries@brookesai.com` |
 | `FROM_EMAIL` | Plain text | A verified sender on your domain, e.g. `Brookes AI <enquiries@brookesai.com>` |
 
 You must verify your domain in Resend (add their DNS records in Cloudflare) before

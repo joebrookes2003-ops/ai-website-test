@@ -1,0 +1,18 @@
+# Old course-site URLs still sitting in Google's index.
+# Without these they return 404, which wastes anyone arriving from a stale
+# search result and slows down how quickly Google drops the old pages.
+# 301 tells Google the page is permanently gone and points it at the new site.
+
+/about.html        /   301
+/contact.html      /#enquire   301
+/faq.html          /#faq       301
+
+/free-course.html  /   301
+/full-course.html  /   301
+/cheat-sheet.html  /   301
+/lesson-1.html     /   301
+/lesson-2.html     /   301
+/lesson-3.html     /   301
+/lesson-4.html     /   301
+/refunds.html      /   301
+/thank-you.html    /   301
